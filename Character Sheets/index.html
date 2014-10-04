@@ -7,13 +7,280 @@
     <title>RPGX Character Sheet - Pathfinder</title>
     
     <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/sheets.css" />
     
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
-    <form>
-      
-    </form>
+    <div class="row">
+      <form class="sheet sheet-pathfinder">
+        <div class="controls">
+          <a href class="button small success radius">Save</a>
+          <a href class="button small alert radius">Revert</a>
+        </div>
+        <div class="row">
+          <!-- Character Portrait/Avatar --> 
+          <div class="columns medium-3 portrait"></div>
+          
+          <!-- Character Metadata -->
+          <div class="columns medium-9 data-block">
+            <div class="row">
+              <div class="columns medium-4">
+                <input id="txtCharName" type="text" />
+                <label for="txtCharName">Character Name</label>
+              </div>
+              
+              <div class="columns medium-4">
+                <input id="txtPlayerName" type="text" />
+                <label for="txtPlayerName">Player Name</label>
+              </div>
+              
+              <div class="columns medium-4">
+                <input id="txtCampaign" type="text" />
+                <label for="txtCampaign">Campaign</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns medium-4">
+                <input id="txtClass" type="text" />
+                <label for="txtClass">Class</label>
+              </div>
+              
+              <div class="columns medium-4">
+                <input id="txtRace" type="text" />
+                <label for="txtRace">Race</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtAlignment" type="text" />
+                <label for="txtAlignment">Alignment</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtDeity" type="text" />
+                <label for="txtDeity">Deity</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns medium-2">
+                <input id="txtSize" type="text" />
+                <label for="txtSize">Size</label>
+              </div>
+              
+              <div class="columns medium-1">
+                <input id="txtAge" type="text" />
+                <label for="txtAge">Age</label>
+              </div>
+              
+              <div class="columns medium-1">
+                <input id="txtGender" type="text" />
+                <label for="txtGender">Gender</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtHeight" type="text" />
+                <label for="txtHeight">Height</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtWeight" type="text" />
+                <label for="txtWeight">Weight</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtEyes" type="text" />
+                <label for="txtEyes">Eyes</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtHair" type="text" />
+                <label for="txtHair">Hair</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns medium-2">
+                <input id="txtHD" type="text" />
+                <label for="txtHD">HD</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtEL" type="text" value="" disabled />
+                <label for="txtEL">EL</label>
+              </div>
+              
+              <div class="columns medium-4">
+                <input id="txtExpCurrent" type="text" />
+                <label for="txtExpCurrent">Experience</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <input id="txtExpNext" type="text" />
+                <label for="txtExpNext">Next</label>
+              </div>
+              
+              <div class="columns medium-2">
+                <span class="select-wrapper">
+                  <select id="cboExpSpeed">
+                    <option value="Fast" selected>Fast</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Slow">Slow</option>
+                  </select>
+                </span>
+                <label for="cboExpSpeed">CR</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="columns medium-4 ability-scores">
+            <fieldset>
+              <legend>Ability Scores</legend>
+              <div class="row t-header">
+                <div class="columns small-2">
+                  &nbsp;
+                </div>
+                <div class="columns small-2">
+                  Base
+                </div>
+                <div class="columns small-2">
+                  Gear
+                </div>
+                <div class="columns small-2">
+                  Temp
+                </div>
+                <div class="columns small-2">
+                  Total
+                </div>
+                <div class="columns small-2">
+                  Mod
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  STR
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  DEX
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  CON
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  INT
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  WIS
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  CHA
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </div>
     
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
