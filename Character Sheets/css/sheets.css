@@ -17,26 +17,39 @@ select {
 }
 
 /* Classes */
-.ability-scores {
+.stat-table {
   padding: 0;
+  margin: 0 5px;
   
   text-align: center;
 }
 
-.ability-scores fieldset {
+.stat-table fieldset {
   padding: 0.25rem 1.25rem 1rem;
 }
 
-.ability-scores .columns {
+.stat-table .columns {
   padding: 0 !important;
 }
 
-.ability-scores .t-header {
+.stat-table .t-header {
+  margin: 0 !important;
+  
   font-size: 0.5rem;
 }
 
-.ability-scores .t-row {
+.stat-table .t-row {
+  margin: 0 !important;
+  
   font-size: 0.75rem;
+}
+
+.stat-table .t-row input {
+  height: 1.25rem;
+  
+  padding: 2px;
+  
+  text-align: center;
 }
 
 .controls {

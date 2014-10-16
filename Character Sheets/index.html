@@ -133,7 +133,7 @@
         </div>
         
         <div class="row">
-          <div class="columns medium-4 ability-scores">
+          <div class="columns medium-4 ability-scores stat-table">
             <fieldset>
               <legend>Ability Scores</legend>
               <div class="row t-header">
@@ -161,13 +161,13 @@
                   STR
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="STR_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="STR_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="STR_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -181,13 +181,13 @@
                   DEX
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="DEX_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="DEX_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="DEX_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -201,13 +201,13 @@
                   CON
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="CON_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="CON_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="CON_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -221,13 +221,13 @@
                   INT
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="INT_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="INT_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="INT_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -241,13 +241,13 @@
                   WIS
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="WIS_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="WIS_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="WIS_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -261,13 +261,13 @@
                   CHA
                 </div>
                 <div class="columns small-2">
-                  10
+                  <input id="CHA_base" type="text" value="10" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="CHA_gear" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
-                  0
+                  <input id="CHA_temp" type="text" value="0" />
                 </div>
                 <div class="columns small-2">
                   10
@@ -277,6 +277,133 @@
                 </div>
               </div>
             </fieldset>
+          </div>
+          
+          <div class="columns medium-4 saves HP stat-table">
+            <fieldset>
+              <legend>Saves</legend>
+              <div class="row t-header">
+                <div class="columns small-2">
+                  &nbsp;
+                </div>
+                <div class="columns small-2">
+                  Base
+                </div>
+                <div class="columns small-2">
+                  Abi
+                </div>
+                <div class="columns small-2">
+                  Misc
+                </div>
+                <div class="columns small-2">
+                  Temp
+                </div>
+                <div class="columns small-2">
+                  Total
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  FORT
+                </div>
+                <div class="columns small-2">
+                  <input id="FORT_base" type="text" value="10" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="FORT_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="FORT_temp" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  REF
+                </div>
+                <div class="columns small-2">
+                  <input id="REF_base" type="text" value="10" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="REF_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="REF_temp" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  WILL
+                </div>
+                <div class="columns small-2">
+                  <input id="WILL_base" type="text" value="10" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="WILL_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="WILL_temp" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+            </fieldset>
+            
+            <div class="row t-header">
+              <div class="columns small-5">
+                Health
+              </div>
+              <div class="columns small-1">
+                &nbsp;
+              </div>
+              <div class="columns small-2">
+                Temp
+              </div>
+              <div class="columns small-2">
+                &nbsp;
+              </div>
+              <div class="columns small-2">
+                Subdual
+              </div>
+            </div>
+            <div class="row t-row">
+              <div class="columns small-2">
+                <input id="HP_current" type="text" value="10" />
+              </div>
+              <div class="columns small-1">
+                /
+              </div>
+              <div class="columns small-2">
+                <input id="HP_max" type="text" value="10" />
+              </div>
+              <div class="columns small-1">
+                &nbsp;
+              </div>
+              <div class="columns small-2">
+                <input id="HP_temp" type="text" value="0" />
+              </div>
+              <div class="columns small-2">
+                <input id="HP_subdual" type="text" value="0" />
+              </div>
+            </div>
+          </div>
+          <div class="columns medium-4 ability-scores stat-table">
+            &nbsp;
           </div>
         </div>
       </form>
