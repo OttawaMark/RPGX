@@ -16,16 +16,75 @@ select {
   margin: 0 auto;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  margin: 0;
+}
+
+label.shrink {
+  position: relative;
+  
+  top: -3px;
+  
+  font-size: 75%;
+}
+
 /* Classes */
+.center {
+  text-align: center;
+}
+
+.removable .add-item {
+  width: 100%;
+  height: 25px;
+  
+  display: block;
+  
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  
+  background-color: #FFF;
+  color: #CCC;
+  
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  
+  -webkit-transition: all 0.15s ease-out;
+          transition: all 0.15s ease-out;
+}
+
+.removable .add-item:focus,
+.removable .add-item:hover {
+  background-color: #EEE;
+}
+
+.removable .remove {
+  position: absolute;
+  
+  top: 35px;
+  right: 25px;
+  
+  color: #999;
+  
+  text-decoration: none;
+}
+
 .stat-table {
-  padding: 0;
-  margin: 0 5px;
+  /*padding: 0;
+  margin: 0 5px;*/
   
   text-align: center;
 }
 
 .stat-table fieldset {
   padding: 0.25rem 1.25rem 1rem;
+  margin: inherit 0;
 }
 
 .stat-table .columns {
@@ -77,6 +136,11 @@ select {
 
 .data-block label {
   font-size: 0.75rem;
+}
+
+.nudge-up {
+  position: relative;
+  top: -8px;
 }
 
 .portrait {

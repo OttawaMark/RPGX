@@ -114,7 +114,7 @@
               </div>
               
               <div class="columns medium-2">
-                <input id="txtExpNext" type="text" />
+                <input id="txtExpNext" type="text" disabled />
                 <label for="txtExpNext">Next</label>
               </div>
               
@@ -126,7 +126,7 @@
                     <option value="Slow">Slow</option>
                   </select>
                 </span>
-                <label for="cboExpSpeed">CR</label>
+                <label for="cboExpSpeed" class="nudge-up">Growth Rate</label>
               </div>
             </div>
           </div>
@@ -402,8 +402,249 @@
               </div>
             </div>
           </div>
-          <div class="columns medium-4 ability-scores stat-table">
-            &nbsp;
+          <div class="columns medium-4 BAB stat-table">
+            <fieldset>
+              <legend>Attack Bonus</legend>
+              <div class="row t-header">
+                <div class="columns small-2">
+                  &nbsp;
+                </div>
+                <div class="columns small-2">
+                  Base
+                </div>
+                <div class="columns small-2">
+                  Abi
+                </div>
+                <div class="columns small-2">
+                  Misc
+                </div>
+                <div class="columns small-2">
+                  Size
+                </div>
+                <div class="columns small-2">
+                  Total
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  Melee
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_M_base" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_M_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_M_size" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  Range
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_R_base" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_R_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_R_size" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  CMB
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMB_base" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMB_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMB_size" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+              </div>
+              <div class="row t-row">
+                <div class="columns small-2">
+                  CMD
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMD_base" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  0
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMD_misc" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  <input id="BAB_CMD_size" type="text" value="0" />
+                </div>
+                <div class="columns small-2">
+                  10
+                </div>
+              </div>
+            </fieldset>
+            
+            <div class="t-row">
+              <div class="columns small-2">
+                <label for="txtSR" class="shrink">Spell Resist</label>
+              </div>
+              <div class="columns small-4">
+                <input id="txtSR" type="text" />
+              </div>
+              <div class="columns small-2">
+                <label for="txtHero" class="shrink">Hero Points</label>
+              </div>
+              <div class="columns small-4">
+                <input id="txtHero" type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row weapons">
+          <div class="columns medium-12 data-block removable">
+            <a href="#" class="remove">X</a>
+            <fieldset>
+              <legend>Weapon</legend>
+              <div class="row">
+                <div class="columns medium-5">
+                  <input id="txtWeaponName_1" type="text" />
+                  <label for="txtWeaponName_1">Name</label>
+                </div>
+                <div class="columns medium-5">
+                  <input id="txtWeaponDesc_1" type="text" />
+                  <label for="txtWeaponDesc_1">Description</label>
+                </div>
+                <div class="columns medium-1 center">
+                  <input id="chkWeaponCarried_1" type="checkbox" checked />
+                  <label for="chkWeaponCarried_1">Carried</label>
+                </div>
+                <div class="columns medium-1 center">
+                  <input id="chkWeaponWielded_1" type="checkbox" />
+                  <label for="chkWeaponWielded_1">Wielded</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns medium-2">
+                  <input id="txtWeaponAttack_1" type="text" />
+                  <label for="txtWeaponAttack_1">Attack</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtWeaponDamage_1" type="text" />
+                  <label for="txtWeaponDamage_1">Damage</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtWeaponType_1" type="text" />
+                  <label for="txtWeaponType_1">Damage Type</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtWeaponCrit_1" type="text" />
+                  <label for="txtWeaponCrit_1">Critical</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtWeaponSize_1" type="text" />
+                  <label for="txtWeaponSize_1">Size</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtWeaponWeight_1" type="text" />
+                  <label for="txtWeaponWeight_1">Weight</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtWeaponRange_1" type="text" />
+                  <label for="txtWeaponRange_1">Range</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtWeaponAmmo_1" type="text" />
+                  <label for="txtWeaponAmmo_1">Ammo</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="columns medium-12 data-block removable">
+            <a href="#" class="add-item" title="Add new weapon">+</a>
+          </div>
+        </div>
+        
+        <div class="row armour">
+          <div class="columns medium-12 data-block removable">
+            <a href="#" class="remove">X</a>
+            <fieldset>
+              <legend>Protective Item</legend>
+              <div class="row">
+                <div class="columns medium-5">
+                  <input id="txtArmourName_1" type="text" />
+                  <label for="txtArmourName_1">Name</label>
+                </div>
+                <div class="columns medium-5">
+                  <input id="txtArmourDesc_1" type="text" />
+                  <label for="txtArmourDesc_1">Description</label>
+                </div>
+                <div class="columns medium-1 center">
+                  <input id="chkArmourCarried_1" type="checkbox" checked />
+                  <label for="chkArmourCarried_1">Carried</label>
+                </div>
+                <div class="columns medium-1 center">
+                  <input id="chkArmourWorn_1" type="checkbox" />
+                  <label for="chkArmourWorn_1">Worn</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns medium-2">
+                  <input id="txtArmourType_1" type="text" />
+                  <label for="txtArmourType_1">Armour Type</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtArmourAC_1" type="text" />
+                  <label for="txtArmourAC_1">AC Bonus</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtWeaponCheck_1" type="text" />
+                  <label for="txtWeaponCheck_1">Check Penalty</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtArmourMaxDex_1" type="text" />
+                  <label for="txtArmourMaxDex_1">Max Dex</label>
+                </div>
+                <div class="columns medium-2">
+                  <input id="txtArmourSpellFail_1" type="text" />
+                  <label for="txtArmourSpellFail_1">Spell Fail</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtArmourWeight_1" type="text" />
+                  <label for="txtArmourWeight_1">Weight</label>
+                </div>
+                <div class="columns medium-1">
+                  <input id="txtArmourSpeed_1" type="text" />
+                  <label for="txtArmourSpeed_1">Speed</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="columns medium-12 data-block removable">
+            <a href="#" class="add-item" title="Add new protective item">+</a>
           </div>
         </div>
       </form>
