@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
-    <title>Survey</title>
+    <title>RPGX Survey Platform</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,48 +23,150 @@
     
   </head>
   <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">Survey</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4><a href="https://html5boilerplate.com/">HTML5 Boilerplate</a></h4>
-          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-          <h4><a href="http://libsass.org/">Sass</a></h4>
-          <p>Sass is a mature, stable, and powerful professional grade CSS extension language.</p>
+      <header>
+        <img src="images/logo_RPGX.png" alt="RPG Crossing" />
+      </header>
+      
+      <div class="survey-body">
+        <form>
+          <section id="section-preface">
+            <h1>RPG Crossing Survey Platform</h1>
+            
+            <div class="preface">
+              <p>
+                RPG Crossing is a play-by-post gaming forum which hosts a number of different
+                systems. [TODO: Expand me!]
+              </p>
+              
+              <p>
+                Answering these questions is very useful to us. [TODO: Expand me!]
+              </p>
+              
+              <p>
+                None of the questions in this survey are required. If you would prefer not to
+                answer, feel free to move on. [TODO: Expand me!]
+              </p>
+            </div>
+          </section>
           
-
-          <h4><a href="http://getbootstrap.com/">Bootstrap</a></h4>
-          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-          <h4><a href="http://modernizr.com/">Modernizr</a></h4>
-          <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
+          <section id="section-index" class="hide section-hide">
+            <h2>Index</h2>
+            
+            <div class="question-wrapper visible-question">
+              <p class="question">
+                <strong>QA1.</strong> Have you at any point been a Community Supporter on RPG Crossing?
+              </p>
+              
+              <div class="option">
+                <input id="chkQA1_A" type="checkbox" class="exclusive section-enable" data-section="cs" data-section-position="2" />
+                <label for="chkQA1_A">Yes</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQA1_B" type="checkbox" class="exclusive section-disable" data-section="cs" />
+                <label for="chkQA1_B">No</label>
+              </div>
+            </div>
+            
+            <div class="question-wrapper visible-question">
+              <p class="question">
+                <strong>QA2.</strong> Have you at any point been a GM on RPG Crossing?
+              </p>
+              
+              <div class="option">
+                <input id="chkQA2_A" type="checkbox" class="exclusive section-enable" data-section="gm" data-section-position="2" />
+                <label for="chkQA2_A">Yes</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQA2_B" type="checkbox" class="exclusive section-disable" data-section="gm" />
+                <label for="chkQA2_B">No</label>
+              </div>
+            </div>
+          </section>
           
-        </div>
+          <section id="section-gm" class="hide section-hide">
+            <h2>Moderators</h2>
+          </section>
+          
+          <section id="section-cs" class="hide section-hide">
+            <h2>Community Supporters</h2>
+          </section>
+          
+          <section id="section-user" class="hide section-hide">
+            <h2>User Information</h2>
+            
+            <div class="question-wrapper visible-question">
+              <p class="question">
+                <strong>QB1.</strong> How did you find out about RPG Crossing?
+              </p>
+              
+              <div class="option">
+                <input id="chkQB1_A" type="checkbox" class="non-exclusive specify" />
+                <label for="chkQB1_A">Suggested in an RPG Forum</label>
+                <input id="txtQB1_A" type="text" placeholder="Please specify" class="specification" />
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_B" type="checkbox" class="non-exclusive" />
+                <label for="chkQB1_B">Suggested by a friend</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_C" type="checkbox" class="non-exclusive specify" />
+                <label for="chkQB1_C">Link from another website</label>
+                <input id="txtQB1_C" type="text" placeholder="Please specify" class="specification" />
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_D" type="checkbox" class="non-exclusive" />
+                <label for="chkB1_D">Link from Facebook</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_E" type="checkbox" class="non-exclusive" />
+                <label for="chkQB1_E">Link from Google+</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_F" type="checkbox" class="non-exclusive" />
+                <label for="chkQB1_F">Link from Twitter</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_G" type="checkbox" class="non-exclusive" />
+                <label for="chkQB1_G">Web search</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_H" type="checkbox" class="non-exclusive" />
+                <label for="chkQB1_H">RPG Gateway (now defunct)</label>
+              </div>
+              
+              <div class="option">
+                <input id="chkQB1_I" type="checkbox" class="non-exclusive specify" />
+                <label for="chkQB1_I">Other</label>
+                <input id="txtQB1_I" type="text" placeholder="Please specify" class="specification" />
+              </div>
+            </div>
+          </section>
+          
+          <section id="section-demographics" class="hide section-hide">
+            <h2>Demographics</h2>
+          </section>
+        </form>
       </div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+      
+      <footer>
+        <a href="#" class="disabled nav nav-previous" title="Previous Section"></a>
+        <a id="nav-index" href="#" class="disabled nav nav-targeted" title="Index"></a>
+        <a id="nav-gm" href="#" class="disabled nav nav-targeted shrunk" title="Moderators" />
+        <a id="nav-cs" href="#" class="disabled nav nav-targeted shrunk" title="Community Supporters" />
+        <a id="nav-user" href="#" class="disabled nav nav-targeted" title="User Information"></a>
+        <a id="nav-demographics" href="#" class="disabled nav nav-targeted" title="Demographics"></a>
+        <a href="#" class="disabled nav nav-next" title="Next Section"></a>
+      </footer>
     </div>
     
 

@@ -1,93 +1,213 @@
-$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+//-- Variables --------------
+$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+$colour-beige: #AF8054;
+$colour-brown: #3F3034;
+$colour-grey: #CCC;
+$colour-grey-dark: #333;
+
+//-- Elements ---------------
+a.disabled
+{
+  pointer-events: none;
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+footer
+{
+  border-top: 1px solid $colour-grey;
+  margin-top: 1rem;
+  padding-top: 1rem;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+}
+
+form
+{
+  text-align: center;
+}
+
+header
+{
+  border-bottom: 1px solid $colour-grey;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+input[type="checkbox"]
+{
+  cursor: pointer;
+  margin: 0 0 0 10px;
+  vertical-align: middle;
+}
+
+input[type="text"]
+{
+  display: inline-block;
+  margin-left: 1rem;
+  
+  -webkit-transition: width 0.5s ease;
+          transition: width 0.5s ease;
+}
+
+label
+{
+  margin: 0;
+  vertical-align: middle;
+  
+  &[for]
+  {
+    cursor: pointer;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
+section
+{
+  opacity: 1.0;
+  
+  -webkit-transition: opacity 1s ease;
+          transition: opacity 1s ease;
+}
+
+//-- IDs --------------------
+
+//-- Classes ----------------
+.nav
+{
+  background-color: $colour-brown;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px;
+  
+  -webkit-transition: background-color 0.25s ease;
+          transition: background-color 0.25s ease;
+  
+  -webkit-transition: width 0.5s ease;
+          transition: width 0.5s ease;
+  
+  &.disabled
+  {
+    background-color: $colour-grey;
+  }
+  
+  &:hover
+  {
+    background-color: $colour-beige;
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+.nav-next
+{
+  background-color: transparent !important;
+  border-color: transparent transparent transparent $colour-brown;
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  height: 0;
+  width: 0;
+  
+  -webkit-transition: border-color 0.25s ease;
+          transition: border-color 0.25s ease;
+  
+  &.disabled
+  {
+    border-color: transparent transparent transparent $colour-grey;
   }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  
+  &:hover
+  {
+    border-color: transparent transparent transparent $colour-grey;
   }
+}
 
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+.nav-previous
+{
+  background-color: transparent !important;
+  border-color: transparent $colour-brown transparent transparent;
+  border-style: solid;
+  border-width: 10px 20px 10px 0;
+  height: 0;
+  width: 0;
+  
+  -webkit-transition: border-color 0.25s ease;
+          transition: border-color 0.25s ease;
+  
+  &.disabled
+  {
+    border-color: transparent $colour-grey transparent transparent;
   }
+  
+  &:hover
+  {
+    border-color: transparent $colour-beige transparent transparent;
+  }
+}
 
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+.nav-targeted
+{
+  height: 20px;
+  width: 50px;
+  border: 0;
+}
+
+.preface
+{
+  text-align: left;
+}
+
+.question-wrapper
+{
+  border: 1px solid $colour-grey;
+  border-radius: 10px;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+  width: 80%;
+  
+  .option
+  {
+    margin: 0.25rem auto;
+    text-align: left;
+    width: 80%;
+  }
+}
+
+.section-hide
+{
+  opacity: 0;
+}
+
+.shrunk
+{
+  margin: 0 !important;
+  width: 0 !important;
+}
+
+.specification
+{
+  border: none;
+  padding: 2px 0;
+  width: 0;
+  
+  &.active
+  {
+    border: 1px solid $colour-grey-dark;
+    padding: 1px 5px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 640px)
+{
+  .question-wrapper
+  {
+    width: 100%;
+    
+    .option
+    {
+      width: 95%;
+    }
   }
 }
