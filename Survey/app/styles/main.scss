@@ -44,6 +44,11 @@ input[type="checkbox"]
   vertical-align: middle;
 }
 
+input[type="submit"]
+{
+  padding: 10px 25px;
+}
+
 input[type="text"]
 {
   display: inline-block;
@@ -93,6 +98,8 @@ section
     background-color: $colour-grey;
   }
   
+  &:active,
+  &:focus,
   &:hover
   {
     background-color: $colour-beige;
@@ -116,9 +123,11 @@ section
     border-color: transparent transparent transparent $colour-grey;
   }
   
+  &:active,
+  &:focus,
   &:hover
   {
-    border-color: transparent transparent transparent $colour-grey;
+    border-color: transparent transparent transparent $colour-beige;
   }
 }
 
@@ -139,6 +148,8 @@ section
     border-color: transparent $colour-grey transparent transparent;
   }
   
+  &:active,
+  &:focus,
   &:hover
   {
     border-color: transparent $colour-beige transparent transparent;

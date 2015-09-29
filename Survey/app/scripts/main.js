@@ -4,7 +4,9 @@
   var sections = ['preface',
                   'index',
                   'user',
-                  'demographics'];
+                  'open',
+                  'demographics',
+                  'submit'];
   
   /**
    * Fades out a specific section, and then removes it once the transition completes.
@@ -227,5 +229,23 @@
     hideSection (currentSection);
     currentSection = targetSection;
     showSection (currentSection);
+  });
+  
+  /**
+   * Submits the questionnaire data to the server for processing.
+   **/
+  $('form').on('submit', function (e) {
+    var responses = {};
+    
+    //Iterate through each named section which is enabled
+    $.each (sections, function (index, value)
+    {
+      $('#section-' + value + ' .question-wrapper.visible-question').each (function (questionIndex)
+      {
+        //TODO: finish this.
+      });
+    });
+    
+    e.preventDefault();
   });
 })();
