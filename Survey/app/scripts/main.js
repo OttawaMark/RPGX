@@ -26,9 +26,6 @@
    **/
   function showSection (section)
   {
-    //DEBUG
-    console.log (sections[section]);
-    
     //Note: timing must be staggered for animation to trigger successfully
     setTimeout (function ()
     {
@@ -40,6 +37,23 @@
       $('#section-' + sections[section]).removeClass ('section-hide');
     }, 1000);
   };
+  
+  /**
+   * Sanitizes JSON strings.
+   * 
+   * Taken from https://gist.github.com/jamischarles/1046671
+   **/
+  function sanitizeJSON (unsanitized)
+  {
+    return unsanitized.replace(/\\/g, "\\\\")
+                      .replace(/\n/g, "\\n")
+                      .replace(/\r/g, "\\r")
+                      .replace(/\t/g, "\\t")
+                      .replace(/\f/g, "\\f")
+                      .replace(/"/g,"\\\"")
+                      .replace(/'/g,"\\\'")
+                      .replace(/\&/g, "\\&"); 
+  }
   
   /**
    * Runs when the document has loaded
@@ -134,9 +148,6 @@
       
       $('#nav-' + targetSection).addClass ('shrunk');
     }
-    
-    //DEBUG
-    console.log (sections);
   });
   
   /**
@@ -235,17 +246,48 @@
    * Submits the questionnaire data to the server for processing.
    **/
   $('form').on('submit', function (e) {
+    e.preventDefault();
+    
     var responses = {};
+    var key, values, tmp, tmpValue;
     
     //Iterate through each named section which is enabled
-    $.each (sections, function (index, value)
+    $.each (sections, function (index, section)
     {
-      $('#section-' + value + ' .question-wrapper.visible-question').each (function (questionIndex)
+      
+      //Iterate through every visible question in this section
+      $('#section-' + section + ' .question-wrapper.visible-question').each (function (questionIndex)
       {
-        //TODO: finish this.
+        key = $(this).find ('strong').html ();
+        values = new Array ();
+        
+        //Check to see which options are checked
+        $(this).find ('.option').each (function (optionIndex)
+        {
+          tmp = $(this).find ('input[type="checkbox"]');
+          if (tmp.prop ('checked'))
+          {
+            //Extract the letter
+            tmpValue = tmp.attr ('id').split ('_')[1];
+            
+            //If this option can be specified, retrieve the specification
+            tmp = $(this).find ('input[type="text"]')
+            
+            if (tmp.length)
+            {
+              tmpValue += ' (' + tmp.val () + ')';
+            }
+            
+            values.push (tmpValue);
+          }
+        });
+        
+        responses[key] = values;
       });
     });
     
-    e.preventDefault();
+    //DEBUG
+    console.log (responses);
+    console.log (sanitizeJSON (JSON.stringify (responses)));
   });
 })();
