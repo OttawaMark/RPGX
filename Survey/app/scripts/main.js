@@ -175,6 +175,41 @@
   });
   
   /**
+   * Handles dynamic question enabling based on question responses.
+   **/
+  $('.question-enable').on ('change', function ()
+  {
+    var targetQuestion = this.dataset.question;
+    
+    if (this.checked)
+    {
+      $('#' + targetQuestion).removeClass ('invisible-question');
+      $('#' + targetQuestion).addClass ('visible-question');
+    }
+    else
+    {
+      $('#' + targetQuestion).removeClass ('visible-question');
+      $('#' + targetQuestion).addClass ('invisible-question');
+    }
+  });
+  
+  /**
+   * Handles dynamic question disabling based on question responses. Note that this becomes
+   * necessary when a question-enable response is deactivated programmatically when a
+   * question-disable response is selected
+   **/
+  $('.question-disable').on ('change', function ()
+  {
+    var targetQuestion = this.dataset.question;
+    
+    if (this.checked)
+    {
+      $('#' + targetQuestion).removeClass ('visible-question');
+      $('#' + targetQuestion).addClass ('invisible-question');
+    }
+  });
+  
+  /**
    * Handles navigation to the next section
    **/
   $('.nav-next').on ('click', function (e)
@@ -251,34 +286,49 @@
     var responses = {};
     var key, values, tmp, tmpValue;
     
+    //Prevent erroneous input
+    $('nav').addClass ('hide');
+    $('input[type=submit]').addClass ('disabled');
+    
     //Iterate through each named section which is enabled
     $.each (sections, function (index, section)
     {
-      
       //Iterate through every visible question in this section
       $('#section-' + section + ' .question-wrapper.visible-question').each (function (questionIndex)
       {
-        key = $(this).find ('strong').html ();
+        key = $(this).prop ('id');
         values = new Array ();
         
         //Check to see which options are checked
         $(this).find ('.option').each (function (optionIndex)
         {
-          tmp = $(this).find ('input[type="checkbox"]');
-          if (tmp.prop ('checked'))
+          tmp = $(this).children ().first ();
+          
+          if (tmp.is ('textarea'))
           {
-            //Extract the letter
-            tmpValue = tmp.attr ('id').split ('_')[1];
-            
-            //If this option can be specified, retrieve the specification
-            tmp = $(this).find ('input[type="text"]')
-            
-            if (tmp.length)
+            values.push (tmp.val ());
+          }
+          else if (tmp.is ('input[type=checkbox]'))
+          {
+            if (tmp.prop ('checked'))
             {
-              tmpValue += ' (' + tmp.val () + ')';
+              //Extract the letter
+              tmpValue = tmp.attr ('id').split ('_')[1];
+              
+              //If this option can be specified, retrieve the specification
+              tmp = $(this).find ('input[type="text"]')
+              
+              if (tmp.length)
+              {
+                tmpValue += ' (' + tmp.val () + ')';
+              }
+              
+              values.push (tmpValue);
             }
-            
-            values.push (tmpValue);
+          }
+          else
+          {
+            console.err ('Type error.');
           }
         });
         
@@ -289,5 +339,7 @@
     //DEBUG
     console.log (responses);
     console.log (sanitizeJSON (JSON.stringify (responses)));
+    
+    //TODO: Call to web service
   });
 })();

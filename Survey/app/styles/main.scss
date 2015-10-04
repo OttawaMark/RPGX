@@ -11,7 +11,8 @@ $colour-grey: #CCC;
 $colour-grey-dark: #333;
 
 //-- Elements ---------------
-a.disabled
+a.disabled,
+input.disabled
 {
   pointer-events: none;
 }
@@ -77,9 +78,23 @@ section
           transition: opacity 1s ease;
 }
 
+textarea
+{
+  margin: 0 auto;
+  width: 100%;
+}
+
 //-- IDs --------------------
 
 //-- Classes ----------------
+.invisible-question
+{
+  border: none !important;
+  margin: 0 auto !important;
+  max-height: 0;
+  padding: 0 !important;
+}
+
 .nav
 {
   background-color: $colour-brown;
@@ -173,15 +188,32 @@ section
   border: 1px solid $colour-grey;
   border-radius: 10px;
   margin: 1rem auto;
+  overflow: hidden;
   padding: 1rem;
   text-align: center;
   width: 80%;
+  
+  -webkit-transition: max-height 0.5s ease;
+          transition: max-height 0.5s ease;
   
   .option
   {
     margin: 0.25rem auto;
     text-align: left;
     width: 80%;
+  }
+}
+
+@media (max-width: 640px)
+{
+  .question-wrapper
+  {
+    width: 100%;
+    
+    .option
+    {
+      width: 95%;
+    }
   }
 }
 
@@ -210,15 +242,7 @@ section
   }
 }
 
-@media (max-width: 640px)
+.visible-question
 {
-  .question-wrapper
-  {
-    width: 100%;
-    
-    .option
-    {
-      width: 95%;
-    }
-  }
+  max-height: 500px;
 }
