@@ -1,0 +1,346 @@
+{
+  "sections":
+  [
+    {
+      "name": "index",
+      "title": "Index",
+      "code": "I",
+      "enabled": true,
+      "questions":
+      [
+        {
+          "questionText": "Have you at any point been a Community Supporter on RPG Crossing?",
+          "visible": true,
+          "options": 
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": 
+              [
+                {
+                  "type": "section",
+                  "name": "cs",
+                  "position": 2
+                }
+              ],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Have you at any point been a GM on RPG Crossing?",
+          "visible": true,
+          "options": 
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": 
+              [
+                {
+                  "type": "section",
+                  "name": "gm",
+                  "position": 2
+                }
+              ],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "title": "User Section",
+      "code": "U",
+      "enabled": true,
+      "questions": 
+      [
+        {
+          "questionText": "Ho did you find out about RPG Crossing?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Suggested in an RPG Forum",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Suggested by a friend",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Link from another website",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Link from Facebook",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Link from Google+",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Link from Twitter",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Web search",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "RPG Gateway (now defunct)",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Which systems do you prefer?",
+          "visible": true,
+          "options": 
+          [
+            {
+              "type": "non-exclusive",
+              "value": "D&amp;D pre-3e",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "D&amp;D 3e",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "D&amp;D 3.5e",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "D&amp;D 4e",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "D&amp;D 5e",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Pathfinder",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Call of Cthulu",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "D20 Modern",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "GURPS",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Mutants &amp; Masterminds",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Pokemon",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Serenity",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Shadowrun",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Star Wars RPG",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "World of Darkness",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "13th Age",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "FATE (includes Dresden Files)",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Cypher (includes Numenera)",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Are you playing in as many games as you'd like?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables":
+              [
+                {
+                  "type": "question",
+                  "name": "E001"
+                }
+              ],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Can you explain why not?",
+          "visible": false,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cs",
+      "title": "Community Supporters",
+      "code": "CS",
+      "enabled": false,
+      "questions":
+      [
+        
+      ]
+    },
+    {
+      "name": "gm",
+      "title": "Game Masters",
+      "code": "GM",
+      "enabled": false,
+      "questions":
+      [
+        
+      ]
+    }
+  ]
+}

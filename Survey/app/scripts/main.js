@@ -1,12 +1,425 @@
 (function () {
   var currentSection = 0;
   
-  var sections = ['preface',
-                  'index',
-                  'user',
-                  'open',
-                  'demographics',
-                  'submit'];
+  var sections;
+  
+  /**
+   * Retrieves the questions associated with this survey and constructs it accordingly.
+   **/
+  function buildSurvey ()
+  {
+    $.getJSON('questions.json', function (json)
+    {
+      //DEBUG
+      //console.log (json);
+      
+      sections = ['preface'];
+      
+      //Used for debugging the JSON
+      var lastItem = {type: '', quaifier: ''};
+      
+      var surveyString = '\n';
+      var navString = '\n';
+      
+      var disableQuestionSet, disableSectionSet;
+      var enableQuestionSet, enableSectionSet, enableSectionPositionSet;
+      
+      try
+      {
+        json.sections.forEach (function (section, sectionIndex)
+        {
+          lastItem = {type: 'section', qualifier: section.name};
+          
+          navString += '<a id="nav-' + section.name + '" href="#" ';
+          navString += 'class="disabled nav nav-targeted';
+          navString += ((!!section.enabled) ? '' : ' shrunk') + '"';
+          navString += ' title="' + section.title + '"></a>\n';
+          
+          if (!!section.enabled) sections.push (section.name);
+          
+          surveyString += '<section id="section-' + section.name + '" class="hide section-hide">\n';
+          surveyString += '<h2>' + section.title + '</h2>\n';
+          
+          section.questions.forEach (function (question, questionIndex)
+          {
+            lastItem = {type: 'question', qualifier: question.questionText};
+            
+            surveyString += '<div id="Q' + section.code + '' + questionIndex + '" ';
+            surveyString += 'class="question-wrapper ' + ((!!question.visible) ? 'visible-question' : 'invisible-question') + '">\n';
+            surveyString += '<p class="question">\n';
+            surveyString += '<strong>Q' + section.code + '' + questionIndex + '</strong>. ';
+            surveyString += question.questionText + '\n</p>\n';
+            
+            question.options.forEach (function (option, optionIndex)
+            {
+              lastItem = {type: 'option', qualifier: ((question.type == 'text') ? 'text: ' + question.questionText : option.value)};
+              
+              surveyString += '<div class="option">\n';
+              
+              if (option.type == 'text')
+              {
+                surveyString += '<textarea ';
+                surveyString += 'id="txtQ' + section.code + '' + questionIndex + '_' + optionIndex + '" ';
+                surveyString += 'rows="4"></textarea>\n';
+              }
+              else
+              {
+                surveyString += '<input type="checkbox" ';
+                surveyString += 'id="chkQ' + section.code + '' + questionIndex + '_' + optionIndex + '" ';
+                surveyString += 'class="' + ((option.type == 'exclusive') ? 'exclusive' : 'non-exclusive');
+                surveyString += ((!!option.specify) ? ' specify' : '');
+                
+                enableQuestionSet = '';
+                enableSectionSet = '';
+                enableSectionPositionSet = '';
+                disableQuestionSet = '';
+                disableSectionSet = '';
+                
+                if (!!option.enables.length)
+                {
+                  option.enables.forEach (function (enableItem, enableItemIndex)
+                  {
+                    if (enableItem.type == 'question')
+                    {
+                      enableQuestionSet += enableItem.name + ' ';
+                    }
+                    
+                    if (enableItem.type == 'section')
+                    {
+                      enableSectionSet += enableItem.name + ' ';
+                      enableSectionPositionSet += enableItem.position + ' ';
+                    }
+                  });
+                  
+                  surveyString += ((!!enableQuestionSet.length) ? ' question-enable' : '');
+                  surveyString += ((!!enableSectionSet.length) ? ' section-enable' : '');
+                }
+                
+                if (!!option.disables.length)
+                {
+                  option.disables.forEach (function (disableItem, disableItemIndex)
+                  {
+                    if (disable.type == 'question')
+                    {
+                      disableQuestionSet += disableItem.name + ' ';
+                    }
+                    
+                    if (disable.type == 'section')
+                    {
+                      disableSectionSet += disableItem.name + ' ';
+                    }
+                  });
+                  
+                  surveyString += ((!!disableQuestionSet.length) ? ' question-disable' : '');
+                  surveyString += ((!!disableSectionSet.length) ? ' section-disable' : '');
+                }
+                
+                surveyString += '"';
+                
+                if (!!enableQuestionSet.length)
+                {
+                  surveyString += ' data-question-enable="' + enableQuestionSet.trim () + '"';
+                }
+                
+                if (!!enableSectionSet.length)
+                {
+                  surveyString += ' data-section-enable="' + enableSectionSet.trim () + '"';
+                  surveyString += ' data-section-enable-position="' + enableSectionPositionSet.trim () + '"';
+                }
+                
+                if (!!disableQuestionSet.length)
+                {
+                  surveyString += ' data-question-disable="' + disableQuestionSet.trim () + '"';
+                }
+                
+                if (!!disableSectionSet.length)
+                {
+                  surveyString += ' data-section-disable="' + disableSectionSet.trim () + '"';
+                }
+                
+                surveyString += ' />\n';
+                surveyString += '<label ';
+                surveyString += 'for="chkQ' + section.code + '' + questionIndex + '_' + optionIndex + '">';
+                surveyString += option.value + '</label>\n';
+                
+                if (!!option.specify)
+                {
+                  surveyString += '<input type="text" ';
+                  surveyString += 'id="txtQ' + section.code + '' + questionIndex + '_' + optionIndex + '" ';
+                  surveyString += 'placeholder="Please specify" class="specification" />\n';
+                }
+              }
+              
+              surveyString += '</div>\n';
+            });
+            
+            surveyString += '</div>\n';
+          });
+          
+          surveyString += '</section>\n';
+        });
+        
+        sections.push ('submit');
+        
+        $('#nav-wrapper').html (navString);
+        $('#generated-questions').html (surveyString);
+        
+        //DEBUG
+        //console.log (sections);
+        //console.log (navString);
+        //console.log (surveyString);
+        
+        //Add handlers after elements are created
+        
+        /**
+         * Handles logic for questions with both exclusive responses. If an exclusive option is selected,
+         * all other options should be deselected.
+         * 
+         * Structure:
+         *    <wrapper>
+         *      <option>
+         *        <question>
+         *      <option>
+         *        <question>
+         **/
+        $('.exclusive').on ('change', function ()
+        {
+          if (this.checked)
+          {
+            $(this).parent ().parent ().find ('.non-exclusive').each (function (index)
+            {
+              var tmp = $(this).prop ('checked');
+              
+              $(this).prop ('checked', false);
+              if (tmp) $(this).trigger('change');
+            });
+            
+            var current = this;
+            
+            $(this).parent ().parent ().find ('.exclusive').each (function (index)
+            {
+              if (this != current)
+              {
+                $(this).prop('checked', false);
+                $(this).trigger('change');
+              }
+            });
+          }
+        });
+        
+        /**
+         * Handles logic for questions with both exclusive responses. If a non-exclusive
+         * option is selected, the exclusive option should be deselected to prevent conflicts.
+         * 
+         * Structure: See above
+         **/
+        $('.non-exclusive').on ('change', function ()
+        {
+          if (this.checked)
+          {
+            $(this).parent ().parent ().find ('.exclusive').each (function (index)
+            {
+              $(this).prop('checked', false);
+              $(this).trigger('change');
+            });
+          }
+        });
+        
+        /**
+         * Expands or hides the "please specify" text box associated with questions that require it.
+         * 
+         * Structure:
+         *   <Question>
+         *   <Label>
+         *   <Specification>
+         **/
+        $('.specify').on ('change', function ()
+        {
+          $(this).next ().next ().toggleClass ('active');
+        });
+        
+        /**
+         * Handles dynamic section enabling based on question responses.
+         **/
+        $('[data-section-enable]').on ('change', function ()
+        {
+          var targetSections = this.dataset.sectionEnable.split (' ');
+          var sectionPositions = this.dataset.sectionEnablePosition.split (' ');
+          
+          if (this.checked)
+          {
+            targetSections.forEach (function (section, index)
+            {
+              sections.splice (sectionPositions[index], 0, section);
+              $('#nav-' + section).removeClass ('shrunk');
+            });
+          }
+          else
+          {
+            targetSections.forEach (function (section, index)
+            {
+              for (var count = 0; count < sections.length; count++)
+              {
+                if (sections[count] == section)
+                {
+                  sections.splice (count, 1);
+                  break;
+                }
+              }
+              
+              $('#nav-' + section).addClass ('shrunk');
+            });
+          }
+        });
+        
+        /**
+         * Handles dynamic section disabling based on question responses. Note that this becomes necessary
+         * when a section-enable response is deactivated programmatically when a section-disable response
+         * is selected
+         **/
+        // $('[data-section-disable]').on ('change', function ()
+        // {
+        //   var targetSections = this.dataset.sectionDisable.split (' ');
+          
+        //   if (this.checked)
+        //   {
+        //     targetSections.forEach (function (section, index)
+        //     {
+        //       for (var count = 0; count < sections.length; count++)
+        //       {
+        //         if (sections[count] == section)
+        //         {
+        //           sections.splice (count, 1);
+        //           break;
+        //         }
+        //       }
+              
+        //       $('#nav-' + section).addClass ('shrunk');
+        //     });
+        //   }
+        // });
+        
+        /**
+         * Handles dynamic question enabling based on question responses.
+         **/
+        $('[data-question-enable]').on ('change', function ()
+        {
+          var targetQuestions = this.dataset.questionEnable.split (' ');
+          
+          if (this.checked)
+          {
+            targetQuestions.forEach (function (question, index)
+            {
+              $('[name=' + question + ']').removeClass ('invisible-question');
+              $('[name=' + question + ']').addClass ('visible-question');
+            });
+          }
+          else
+          {
+            targetQuestions.forEach (function (question, index)
+            {
+              $('[name=' + question + ']').removeClass ('visible-question');
+              $('[name=' + question + ']').addClass ('invisible-question');
+            });
+          }
+        });
+        
+        /**
+         * Handles dynamic question disabling based on question responses. Note that this becomes
+         * necessary when a question-enable response is deactivated programmatically when a
+         * question-disable response is selected
+         **/
+        // $('[data-question-disable]').on ('change', function ()
+        // {
+        //   var targetQuestions = this.dataset.questionDisable.split (' ');
+          
+        //   if (this.checked)
+        //   {
+        //     targetQuestions.forEach (function (question, index)
+        //     {
+        //       $('[name=' + question + ']').removeClass ('visible-question');
+        //       $('[name=' + question + ']').addClass ('invisible-question');
+        //     });
+        //   }
+        // });
+        
+        /**
+         * Handles navigation to the next section
+         **/
+        $('.nav-next').on ('click', function (e)
+        {
+          e.preventDefault ();
+          
+          if (currentSection < (sections.length - 1))
+          {
+            hideSection (currentSection);
+            currentSection++;
+            showSection (currentSection);
+            $('.nav-previous').removeClass ('disabled');
+            
+            //Enable a specific section the first time the user navigates to it
+            $('#nav-' + sections[currentSection]).removeClass ('disabled');
+            
+            if (currentSection == (sections.length - 1))
+            {
+              $('.nav-next').addClass ('disabled');
+            }
+          }
+        });
+        
+        /**
+         * Handles navigation to the previous section
+         **/
+        $('.nav-previous').on ('click', function (e)
+        {
+          e.preventDefault ();
+          
+          if (currentSection > 0)
+          {
+            hideSection (currentSection);
+            currentSection--;
+            showSection (currentSection);
+            $('.nav-next').removeClass ('disabled');
+            
+            if (currentSection == 0)
+            {
+              $('.nav-previous').addClass ('disabled');
+            }
+          }
+        });
+        
+        /**
+         * Switches the view to a specific target section.
+         **/
+        $('.nav-targeted').on ('click', function (e)
+        {
+          e.preventDefault ();
+          
+          var clicked = this.id.split ('-')[1];
+          var targetSection = 0;
+          
+          for (var count = 0; count < (sections.length - 1); count++)
+          {
+            targetSection++;
+            if (sections[targetSection] == clicked) break;
+          }
+          
+          if (targetSection == currentSection) return;
+          
+          hideSection (currentSection);
+          currentSection = targetSection;
+          showSection (currentSection);
+        });
+        
+        $('.nav-next').removeClass ('disabled');
+      }
+      catch (e)
+      {
+        console.error (e);
+        console.error ('Survey questions malformed. (' + lastItem.type + ', ' + lastItem.qualifier + ')');
+      }
+    });
+  }
   
   /**
    * Fades out a specific section, and then removes it once the transition completes.
@@ -59,223 +472,9 @@
    * Runs when the document has loaded
    **/
   $(document).ready (function () {
-    $('.nav-next').removeClass ('disabled');
+    buildSurvey ();
   });
   
-  /**
-   * Handles logic for questions with both exclusive responses. If an exclusive option is selected,
-   * all other options should be deselected.
-   * 
-   * Structure:
-   *    <wrapper>
-   *      <option>
-   *        <question>
-   *      <option>
-   *        <question>
-   **/
-  $('.exclusive').on ('change', function ()
-  {
-    if (this.checked)
-    {
-      $(this).parent ().parent ().find ('.non-exclusive').each (function (index)
-      {
-        if ($(this).prop ('checked')) $(this).trigger ('change');
-        $(this).prop ('checked', false);
-      });
-      
-      var current = this;
-      
-      $(this).parent ().parent ().find ('.exclusive').each (function (index)
-      {
-        if (this != current) $(this).prop('checked', false);
-      });
-    }
-  });
-  
-  /**
-   * Handles logic for questions with both exclusive responses. If a non-exclusive
-   * option is selected, the exclusive option should be deselected to prevent conflicts.
-   * 
-   * Structure: See above
-   **/
-  $('.non-exclusive').on ('change', function ()
-  {
-    if (this.checked)
-    {
-      $(this).parent ().parent ().find ('.exclusive').each (function (index)
-      {
-        $(this).prop('checked', false);
-      });
-    }
-  });
-  
-  /**
-   * Expands or hides the "please specify" text box associated with questions that require it.
-   * 
-   * Structure:
-   *   <Question>
-   *   <Label>
-   *   <Specification>
-   **/
-  $('.specify').on ('change', function ()
-  {
-    $(this).next ().next ().toggleClass ('active');
-  });
-  
-  /**
-   * Handles dynamic section enabling based on question responses.
-   **/
-  $('.section-enable').on ('change', function ()
-  {
-    var targetSection = this.dataset.section;
-    
-    if (this.checked)
-    {
-      sections.splice (this.dataset.sectionPosition, 0, targetSection);
-      $('#nav-' + targetSection).removeClass ('shrunk');
-    }
-    else
-    {
-      //NOTE: This does not use sectionPosition because multiple sections may be inserted
-      for (var count = 0; count < sections.length; count++)
-      {
-        if (sections[count] == targetSection)
-        {
-          sections.splice (count, 1);
-          break;
-        }
-      }
-      
-      $('#nav-' + targetSection).addClass ('shrunk');
-    }
-  });
-  
-  /**
-   * Handles dynamic section disabling based on question responses. Note that this becomes necessary
-   * when a section-enable response is deactivated programmatically when a section-disable response
-   * is selected
-   **/
-  $('.section-disable').on ('change', function ()
-  {
-    var targetSection = this.dataset.section;
-    
-    if (this.checked)
-    {
-      for (var count = 0; count < sections.length; count++)
-      {
-        if (sections[count] == targetSection)
-        {
-          sections.splice (count, 1);
-          break;
-        }
-      }
-      
-      $('#nav-' + targetSection).addClass ('shrunk');
-    }
-  });
-  
-  /**
-   * Handles dynamic question enabling based on question responses.
-   **/
-  $('.question-enable').on ('change', function ()
-  {
-    var targetQuestion = this.dataset.question;
-    
-    if (this.checked)
-    {
-      $('#' + targetQuestion).removeClass ('invisible-question');
-      $('#' + targetQuestion).addClass ('visible-question');
-    }
-    else
-    {
-      $('#' + targetQuestion).removeClass ('visible-question');
-      $('#' + targetQuestion).addClass ('invisible-question');
-    }
-  });
-  
-  /**
-   * Handles dynamic question disabling based on question responses. Note that this becomes
-   * necessary when a question-enable response is deactivated programmatically when a
-   * question-disable response is selected
-   **/
-  $('.question-disable').on ('change', function ()
-  {
-    var targetQuestion = this.dataset.question;
-    
-    if (this.checked)
-    {
-      $('#' + targetQuestion).removeClass ('visible-question');
-      $('#' + targetQuestion).addClass ('invisible-question');
-    }
-  });
-  
-  /**
-   * Handles navigation to the next section
-   **/
-  $('.nav-next').on ('click', function (e)
-  {
-    e.preventDefault ();
-    
-    if (currentSection < (sections.length - 1))
-    {
-      hideSection (currentSection);
-      currentSection++;
-      showSection (currentSection);
-      $('.nav-previous').removeClass ('disabled');
-      
-      //Enable a specific section the first time the user navigates to it
-      $('#nav-' + sections[currentSection]).removeClass ('disabled');
-      
-      if (currentSection == (sections.length - 1))
-      {
-        $('.nav-next').addClass ('disabled');
-      }
-    }
-  });
-  
-  /**
-   * Handles navigation to the previous section
-   **/
-  $('.nav-previous').on ('click', function (e)
-  {
-    e.preventDefault ();
-    
-    if (currentSection > 0)
-    {
-      hideSection (currentSection);
-      currentSection--;
-      showSection (currentSection);
-      $('.nav-next').removeClass ('disabled');
-      
-      if (currentSection == 0)
-      {
-        $('.nav-previous').addClass ('disabled');
-      }
-    }
-  });
-  
-  /**
-   * Switches the view to a specific target section.
-   **/
-  $('.nav-targeted').on ('click', function (e)
-  {
-    e.preventDefault ();
-    
-    var clicked = this.id.split ('-')[1];
-    var targetSection = 0;
-    
-    for (var count = 0; count < (sections.length - 1); count++)
-    {
-      targetSection++;
-      if (sections[targetSection] == clicked) break;
-    }
-    
-    if (targetSection == currentSection) return;
-    
-    hideSection (currentSection);
-    currentSection = targetSection;
-    showSection (currentSection);
-  });
   
   /**
    * Submits the questionnaire data to the server for processing.

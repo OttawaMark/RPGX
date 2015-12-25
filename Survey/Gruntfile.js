@@ -344,6 +344,11 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
           dest: '<%= config.dist %>'
+        }, {
+          dot: true,
+          cwd: '<%= config.app =>',
+          dest: '<%= config.dist =>',
+          src: ['questions.json']
         }]
       }
     },

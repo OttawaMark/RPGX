@@ -1,0 +1,47 @@
+-- Specifications for questions object model ----------------------------------
+
+Root element:
+- "sections" (object[]) -> Array of Section elements to represent the various sections in the survey
+
+Section element:
+- "name" (string) -> Included in section ID
+- "title" (string) -> Goes in the section's h2
+- "code" (string) -> Keys questions in this section
+- "enabled" (bool) -> Whether or not this section is available on load
+- "questions" (object[]) -> Array of Question elements to represent questions in this section
+
+Question element:
+- "questionText" (string) -> The text that comprises the question itself
+- "visible" (bool) -> Whether or not this question is visible at load
+- "enabled_by" (string) -> Optional; Customized question code to associate this question with the response that enables it
+- "options" -> Array of Option elements to represent answers
+
+Option element:
+- "type" (string) -> "exclusive", "non-exclusive", or "text"
+- "value" (string) -> Optional if type == text; The text associated with this answer
+- "specify" (bool) -> Optional if type == text; Whether or not this response has the option to specify
+- "enables" (object[]) -> Optional if type == text; Array of Enable elements representing any sections or questions that this specific answer enables
+- "disables" (object[]) -> Optional if type == text; Array of Disable elements representing any sections of questions that this specific answer disables
+
+Enable element:
+- "type" (string) -> "section" or "question"
+- "name" (string) -> Name of the section or code of the question to enable
+- "position" (int) -> Required if type == section; position at which this section will be added to the navigation array
+
+Disable element:
+- "type" (string) -> "section" or "question"
+- "name" (string) -> Name of the section or code of the question to disable
+
+-------------------------------------------------------------------------------
+
+-- Specifications for the responses object model ------------------------------
+
+Root element:
+- keys -> Created for each visible question when the survery is submitted, set to the ID of the given question.
+- values -> Array of Answer elements representing all selected answers to the given question. If the question is not answered, the array exists, but is empty.
+
+Answer element:
+- checkbox -> Produces a numerical result associated with the selected answer as a string. If the answer has the option to specify, the specification is included in parentheses following the numeral within the same string.
+- textarea -> Appends the contents of the textarea as a string
+
+--------------------------------------------------------------------------------

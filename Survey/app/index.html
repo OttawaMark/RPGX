@@ -54,18 +54,44 @@
             <section id="section-index" class="hide section-hide">
               <h2>Index</h2>
               
+              <div id="QI0" class="question-wrapper visible-question">
+                <p class="question">
+                  <strong>QI0</strong>. Do you want to test this platform?
+                </p>
+                
+                <div class="option">
+                  <input id="chkQI0_A" type="checkbox" class="exclusive" data-section-enable="cs gm" data-section-enable-position="2" />
+                  <label for="chkQI0_A">Yes! (exclusive)</label>
+                </div>
+                
+                <div class="option">
+                  <input id="chkQI0_B" type="checkbox" class="non-exclusive" />
+                  <label for="chkQI0_B">Yes? (non-exclusive)</label>
+                </div>
+                
+                <div class="option">
+                  <input id="chkQI0_C" type="checkbox" class="non-exclusive" />
+                  <label for="chkQI0_C">Maybe (non-exclusive)</label>
+                </div>
+                
+                <div class="option">
+                  <input id="chkQI0_D" type="checkbox" class="exclusive" />
+                  <label for="chkQI0_D">No! (exclusive)</label>
+                </div>
+              </div>
+              
               <div id="QI1" class="question-wrapper visible-question">
                 <p class="question">
                   <strong>QI1</strong>. Have you at any point been a Community Supporter on RPG Crossing?
                 </p>
                 
                 <div class="option">
-                  <input id="chkQI1_A" type="checkbox" class="exclusive section-enable" data-section="cs" data-section-position="2" />
+                  <input id="chkQI1_A" type="checkbox" class="exclusive section-enable" data-section-enable="cs gm" data-section-enable-position="2" />
                   <label for="chkQI1_A">Yes</label>
                 </div>
                 
                 <div class="option">
-                  <input id="chkQI1_B" type="checkbox" class="exclusive section-disable" data-section="cs" />
+                  <input id="chkQI1_B" type="checkbox" class="exclusive section-disable" data-section-disable="cs gm" />
                   <label for="chkQI1_B">No</label>
                 </div>
               </div>
@@ -76,12 +102,12 @@
                 </p>
                 
                 <div class="option">
-                  <input id="chkQI2_A" type="checkbox" class="exclusive section-enable" data-section="gm" data-section-position="2" />
+                  <input id="chkQI2_A" type="checkbox" class="exclusive section-enable" data-section-enable="gm" data-section-enable-position="2" />
                   <label for="chkQI2_A">Yes</label>
                 </div>
                 
                 <div class="option">
-                  <input id="chkQI2_B" type="checkbox" class="exclusive section-disable" data-section="gm" />
+                  <input id="chkQI2_B" type="checkbox" class="exclusive section-disable" data-section-disable="gm" />
                   <label for="chkQI2_B">No</label>
                 </div>
               </div>
@@ -260,17 +286,17 @@
                 </p>
                 
                 <div class="option">
-                  <input id="chkQU10_A" type="checkbox" class="exclusive question-disable" data-question="QU10B" />
+                  <input id="chkQU10_A" type="checkbox" class="exclusive question-disable" data-question-disable="E001" />
                   <label for="chkQU1_A">Yes</label>
                 </div>
                 
                 <div class="option">
-                  <input id="chkQU10_B" type="checkbox" class="exclusive question-enable" data-question="QU10B" />
+                  <input id="chkQU10_B" type="checkbox" class="exclusive question-enable" data-question-enable="E001" />
                   <label for="chkQU1_B">No</label>
                 </div>
               </div>
               
-              <div id="QU10B" class="question-wrapper invisible-question">
+              <div id="QU10B" class="question-wrapper invisible-question" name="E001">
                 <p class="question">
                   <strong>QU10B</strong>. Can you explain why?
                 </p>
@@ -315,12 +341,17 @@
       <footer>
         <nav>
           <a href="#" class="disabled nav nav-previous" title="Previous Section"></a>
-          <a id="nav-index" href="#" class="disabled nav nav-targeted" title="Index"></a>
-          <a id="nav-gm" href="#" class="disabled nav nav-targeted shrunk" title="Moderators" />
-          <a id="nav-cs" href="#" class="disabled nav nav-targeted shrunk" title="Community Supporters" />
-          <a id="nav-user" href="#" class="disabled nav nav-targeted" title="User Information"></a>
-          <a id="nav-open" href="#" class="disabled nav nav-targeted" title="Open-Ended Questions" />
-          <a id="nav-demographics" href="#" class="disabled nav nav-targeted" title="Demographics"></a>
+          
+          <!-- TODO: Revamp navigation system to dynamically build targeted nav -->
+          <div id="nav-wrapper">
+            <a id="nav-index" href="#" class="disabled nav nav-targeted" title="Index"></a>
+            <a id="nav-gm" href="#" class="disabled nav nav-targeted shrunk" title="Moderators" />
+            <a id="nav-cs" href="#" class="disabled nav nav-targeted shrunk" title="Community Supporters" />
+            <a id="nav-user" href="#" class="disabled nav nav-targeted" title="User Information"></a>
+            <a id="nav-open" href="#" class="disabled nav nav-targeted" title="Open-Ended Questions" />
+            <a id="nav-demographics" href="#" class="disabled nav nav-targeted" title="Demographics"></a>
+          </div>
+          
           <a href="#" class="disabled nav nav-next" title="Next Section"></a>
         </nav>
       </footer>
