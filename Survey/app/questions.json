@@ -22,7 +22,7 @@
                 {
                   "type": "section",
                   "name": "cs",
-                  "position": 2
+                  "position": 3
                 }
               ],
               "disables": []
@@ -50,7 +50,7 @@
                 {
                   "type": "section",
                   "name": "gm",
-                  "position": 2
+                  "position": 3
                 }
               ],
               "disables": []
@@ -74,7 +74,7 @@
       "questions": 
       [
         {
-          "questionText": "Ho did you find out about RPG Crossing?",
+          "questionText": "How did you find out about RPG Crossing?",
           "visible": true,
           "options":
           [
@@ -284,6 +284,314 @@
           ]
         },
         {
+          "questionText": "Are you aware of the benefits of CS memberships, including ad-free play, a mobile style (currently CS-only, but this feature will ultimately be for everyone), larger avatars, invisible browsing, and a larger pm box?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "If you are not a CS member, why not?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Can't afford the price",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Don't like the upgrade features",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Don't think it's worth the price",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Don't trust online purchasing",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Don't like PayPal",
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Other",
+              "enables": [],
+              "disables": [],
+              "specify": true
+            }
+          ]
+        },
+        {
+          "questionText": "Which of the following additional site features are you aware of?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Iron DM",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Outplay",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "New PLayer Solo Games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Hall of Fame",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Post of the Month",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Explosive Runes Magazine",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "RPG Crossing Podcasts",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Which of the following additional site features interest you?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Iron DM",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Outplay",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "New PLayer Solo Games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Hall of Fame",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Post of the Month",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Explosive Runes Magazine",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "RPG Crossing Podcasts",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Would you recommend this site to someone else interested in RPG tabletop gaming?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Would you like an easy way to share your games on Facebook?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Would you like a way to share choice moments from your games on Twitter?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How do you find games to play in?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Games Seeking Players forum",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Players Seeking Games forum",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "IFTTT subscriptions",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "RSS feed subscriptions",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Twitter announcements of games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Facebook announcements of games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Direct petitioning of GMs",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "With friends from off-site",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
           "questionText": "Are you playing in as many games as you'd like?",
           "visible": true,
           "options":
@@ -313,10 +621,806 @@
         {
           "questionText": "Can you explain why not?",
           "visible": false,
+          "enabled_by": "E001",
           "options":
           [
             {
               "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "Do you find the site easy to navigate?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables":
+              [
+                {
+                  "type": "question",
+                  "name": "E002"
+                }
+              ],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What can we do to make navigation easier?",
+          "visible": false,
+          "enabled_by": "E002",
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "How satisfied are you with our character sheets?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How satisfied are you with our mobile GUI?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How satisfied are you with our types of games supported?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How satisfied are you with our special events (Iron DM, Outplay, PotM, etc.)?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How satisfied are you with our dice roller?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What improvements would you like to see in our gaming tools?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "What is your most frequent entry page into the site?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Home page",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Game page",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "My account page",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What would most improve your experience on the site?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gm",
+      "title": "Game Masters",
+      "code": "GM",
+      "enabled": false,
+      "questions":
+      [
+        {
+          "questionText": "As a GM, how satisfied are you with our character sheets?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our mobile GUI?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our types of games supported?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our special events (Iron DM, Outplay, PotM, etc.)?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our game creation tools?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our game folder controls?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "As a GM, how satisfied are you with our dice roller?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Very Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Satisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Neither Satisfied nor Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Very Dissatisfied",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "I have not used this feature",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Which tools most improve the gaming experience here as a GM?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Character Sheets",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Mobile GUI",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Types of games supported",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Special events (Iron DM, Outplay, PotM, etc.)",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Game Creation Tools",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Game Folder Controls",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Dice Roller",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Would you like an easy way to share your games to Facebook?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Would you like an easy way to share choice moments from your games on Twitter?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
             }
           ]
         }
@@ -329,17 +1433,392 @@
       "enabled": false,
       "questions":
       [
-        
+        {
+          "questionText": "If you have a monthly subscription, why do you have a monthly subscription instead of a yearly subcription?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "What do you like most about being a CS (select all that apply)?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Increased avatar image size",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Mobile GUI",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Increased PM mailbox size",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Increased game folder control",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Hall of fame voting",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Custom user titles",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Prestige of a green name",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Getting into more games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "I get a lot out of this site, and it's cheap compared to the returns",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "The site supporting the Brain and Behaviour Research Foundation in the December drive",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Do you use the mobile GUI?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What additional CS features would you like?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "More RPXP hits per day",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Ability to award more RPXP per hit",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "The ability for GMs to customize the look of their game forums",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "A higher tier of CS to give the site more support, with additional perks",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Better support for putting all of a GM's games into a master folder",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What would most improve your experience as a CS?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "gm",
-      "title": "Game Masters",
-      "code": "GM",
-      "enabled": false,
+      "name": "open",
+      "title": "Open Questions",
+      "code": "O",
+      "enabled": true,
       "questions":
       [
-        
+        {
+          "questionText": "What do you love about RPG Crossing?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "What do you think others can learn from RPG Crossing?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "What should RPG Crossing do more of?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "Do you have any other comments or suggestions that you would like to share?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "demographics",
+      "title": "Demographics",
+      "code": "D",
+      "enabled": true,
+      "questions":
+      [
+        {
+          "questionText": "What is your gender?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Male",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Female",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Prefer not to answer",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What range does your age fall in to?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "17 or under",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "18 to 24",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "25 to 34",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "35 to 44",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "45 to 54",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "55 to 64",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "65 or more",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Prefer not to answer",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "How long have you been playing RPGs?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Less than a year",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "1-2 years",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "3-5 years",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "6-10 years",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "11-20 years",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "20+ years",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "Prefer not to answer",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        }
       ]
     }
   ]

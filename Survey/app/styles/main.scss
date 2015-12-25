@@ -61,6 +61,7 @@ input[type="text"]
 
 label
 {
+  display: inline;
   margin: 0;
   vertical-align: middle;
   
@@ -180,6 +181,14 @@ textarea
   height: 20px;
   width: 50px;
   border: 0;
+}
+
+@media (max-width: 700px)
+{
+  .nav-targeted
+  {
+    width: 20px;
+  }
 }
 
 .preface

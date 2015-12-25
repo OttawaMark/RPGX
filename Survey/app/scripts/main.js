@@ -45,6 +45,7 @@
             lastItem = {type: 'question', qualifier: question.questionText};
             
             surveyString += '<div id="Q' + section.code + '' + questionIndex + '" ';
+            surveyString += ((!!question.enabled_by) ? ('name="' + question.enabled_by + '" ') : '');
             surveyString += 'class="question-wrapper ' + ((!!question.visible) ? 'visible-question' : 'invisible-question') + '">\n';
             surveyString += '<p class="question">\n';
             surveyString += '<strong>Q' + section.code + '' + questionIndex + '</strong>. ';
@@ -263,6 +264,7 @@
                 if (sections[count] == section)
                 {
                   sections.splice (count, 1);
+                  
                   break;
                 }
               }
@@ -536,8 +538,8 @@
     });
     
     //DEBUG
-    console.log (responses);
-    console.log (sanitizeJSON (JSON.stringify (responses)));
+    //console.log (responses);
+    //console.log (sanitizeJSON (JSON.stringify (responses)));
     
     //TODO: Call to web service
   });
