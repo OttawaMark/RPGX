@@ -275,31 +275,29 @@
         });
         
         /**
-         * Handles dynamic section disabling based on question responses. Note that this becomes necessary
-         * when a section-enable response is deactivated programmatically when a section-disable response
-         * is selected
+         * Handles dynamic section disabling based on question responses.
          **/
-        // $('[data-section-disable]').on ('change', function ()
-        // {
-        //   var targetSections = this.dataset.sectionDisable.split (' ');
+        $('[data-section-disable]').on ('change', function ()
+        {
+          var targetSections = this.dataset.sectionDisable.split (' ');
           
-        //   if (this.checked)
-        //   {
-        //     targetSections.forEach (function (section, index)
-        //     {
-        //       for (var count = 0; count < sections.length; count++)
-        //       {
-        //         if (sections[count] == section)
-        //         {
-        //           sections.splice (count, 1);
-        //           break;
-        //         }
-        //       }
+          if (this.checked)
+          {
+            targetSections.forEach (function (section, index)
+            {
+              for (var count = 0; count < sections.length; count++)
+              {
+                if (sections[count] == section)
+                {
+                  sections.splice (count, 1);
+                  break;
+                }
+              }
               
-        //       $('#nav-' + section).addClass ('shrunk');
-        //     });
-        //   }
-        // });
+              $('#nav-' + section).addClass ('shrunk');
+            });
+          }
+        });
         
         /**
          * Handles dynamic question enabling based on question responses.
@@ -327,23 +325,21 @@
         });
         
         /**
-         * Handles dynamic question disabling based on question responses. Note that this becomes
-         * necessary when a question-enable response is deactivated programmatically when a
-         * question-disable response is selected
+         * Handles dynamic question disabling based on question responses.
          **/
-        // $('[data-question-disable]').on ('change', function ()
-        // {
-        //   var targetQuestions = this.dataset.questionDisable.split (' ');
+        $('[data-question-disable]').on ('change', function ()
+        {
+          var targetQuestions = this.dataset.questionDisable.split (' ');
           
-        //   if (this.checked)
-        //   {
-        //     targetQuestions.forEach (function (question, index)
-        //     {
-        //       $('[name=' + question + ']').removeClass ('visible-question');
-        //       $('[name=' + question + ']').addClass ('invisible-question');
-        //     });
-        //   }
-        // });
+          if (this.checked)
+          {
+            targetQuestions.forEach (function (question, index)
+            {
+              $('[name=' + question + ']').removeClass ('visible-question');
+              $('[name=' + question + ']').addClass ('invisible-question');
+            });
+          }
+        });
         
         /**
          * Handles navigation to the next section

@@ -336,7 +336,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'questions.json'
           ]
         }, {
           expand: true,
@@ -344,11 +345,6 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
           dest: '<%= config.dist %>'
-        }, {
-          dot: true,
-          cwd: '<%= config.app =>',
-          dest: '<%= config.dist =>',
-          src: ['questions.json']
         }]
       }
     },
