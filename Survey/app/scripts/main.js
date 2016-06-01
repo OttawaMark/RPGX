@@ -234,9 +234,16 @@
          *   <Label>
          *   <Specification>
          **/
-        $('.specify').on ('change', function ()
+        $('.specify').on ('change', function (event)
         {
-          $(this).next ().next ().toggleClass ('active');
+          if (event.currentTarget.checked)
+          {
+            $(this).next ().next ().addClass ('active');
+          }
+          else
+          {
+            $(this).next ().next ().removeClass ('active');
+          }
         });
         
         /**
