@@ -113,16 +113,22 @@ textarea
   -webkit-transition: width 0.5s ease;
           transition: width 0.5s ease;
   
-  &.disabled
-  {
-    background-color: $colour-grey;
-  }
-  
   &:active,
   &:focus,
   &:hover
   {
     background-color: $colour-beige;
+  }
+  
+  &.disabled
+  {
+    background-color: $colour-grey;
+  }
+  
+  &.shrunk
+  {
+    margin: 0 -2.5px !important;
+    width: 0 !important;
   }
 }
 
@@ -133,6 +139,7 @@ textarea
   border-style: solid;
   border-width: 10px 0 10px 20px;
   height: 0;
+  margin: 0;
   width: 0;
   
   -webkit-transition: border-color 0.25s ease;
@@ -158,6 +165,7 @@ textarea
   border-style: solid;
   border-width: 10px 20px 10px 0;
   height: 0;
+  margin: 0;
   width: 0;
   
   -webkit-transition: border-color 0.25s ease;
@@ -233,12 +241,6 @@ textarea
 .section-hide
 {
   opacity: 0;
-}
-
-.shrunk
-{
-  margin: 0 !important;
-  width: 0 !important;
 }
 
 .specification
