@@ -68,6 +68,11 @@ Development can be done using the grunt server, which includes livereload:
 Any changes made to watched directories will automatically propagate into the app, so testing can
 be done in real time.
 
+*Note*: Any ongoing changes should be made to the staging branch. If the project becomes more
+complex, additional branches will be created on a per-feature basis to prevent conflicts. Once
+development on a feature is complete, submit a pull request to have the updates propagated to the
+master branch after peer-review.
+
 ##Deployment
 
 To create a deployment build, use:
