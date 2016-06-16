@@ -13,7 +13,7 @@
       //DEBUG
       //console.log (json);
       
-      sections = ['preface'];
+      sections = [{name: 'preface', enabled: true}];
       
       //Used for debugging the JSON
       var lastItem = {type: '', quaifier: ''};
@@ -26,7 +26,7 @@
       
       try
       {
-        json.sections.forEach (function (section, sectionIndex)
+        $.each (json.sections, function (sectionIndex, section)
         {
           lastItem = {type: 'section', qualifier: section.name};
           
@@ -35,7 +35,7 @@
           navString += ((!!section.enabled) ? '' : ' shrunk') + '"';
           navString += ' title="' + section.title + '"></a>\n';
           
-          if (!!section.enabled) sections.push (section.name);
+          sections.push ({name: section.name, enabled: !!section.enabled});
           
           surveyString += '<section id="section-' + section.name + '" class="hide section-hide">\n';
           surveyString += '<h2>' + section.title + '</h2>\n';
@@ -160,7 +160,7 @@
           surveyString += '</section>\n';
         });
         
-        sections.push ('submit');
+        sections.push ({name: 'submit', enabled: true});
         
         $('#nav-wrapper').html (navString);
         $('#generated-questions').html (surveyString);
@@ -252,33 +252,27 @@
         $('[data-section-enable]').on ('change', function ()
         {
           var targetSections = this.dataset.sectionEnable.split (' ');
-          var sectionPositions = this.dataset.sectionEnablePosition.split (' ');
+          var status = this.checked;
           
-          if (this.checked)
+          targetSections.forEach (function (target, index)
           {
-            targetSections.forEach (function (section, index)
+            sections.forEach (function (section, sectionIndex)
             {
-              sections.splice (sectionPositions[index], 0, section);
-              $('#nav-' + section).removeClass ('shrunk');
-            });
-          }
-          else
-          {
-            targetSections.forEach (function (section, index)
-            {
-              for (var count = 0; count < sections.length; count++)
+              if (section.name == target)
               {
-                if (sections[count] == section)
+                section.enabled = !!status;
+                
+                if (!!status)
                 {
-                  sections.splice (count, 1);
-                  
-                  break;
+                  $('#nav-' + target).removeClass ('shrunk');
+                }
+                else
+                {
+                  $('#nav-' + target).addClass ('shrunk');
                 }
               }
-              
-              $('#nav-' + section).addClass ('shrunk');
             });
-          }
+          });
         });
         
         /**
@@ -287,23 +281,27 @@
         $('[data-section-disable]').on ('change', function ()
         {
           var targetSections = this.dataset.sectionDisable.split (' ');
+          var status = this.checked;
           
-          if (this.checked)
+          targetSections.forEach (function (target, index)
           {
-            targetSections.forEach (function (section, index)
+            sections.forEach (function (section, sectionIndex)
             {
-              for (var count = 0; count < sections.length; count++)
+              if (section.name == target)
               {
-                if (sections[count] == section)
+                section.enabled = !status;
+                
+                if (!!status)
                 {
-                  sections.splice (count, 1);
-                  break;
+                  $('#nav-' + target).addClass ('shrunk');
+                }
+                else
+                {
+                  $('#nav-' + target).removeClass ('shrunk');
                 }
               }
-              
-              $('#nav-' + section).addClass ('shrunk');
             });
-          }
+          });
         });
         
         /**
@@ -363,7 +361,7 @@
             $('.nav-previous').removeClass ('disabled');
             
             //Enable a specific section the first time the user navigates to it
-            $('#nav-' + sections[currentSection]).removeClass ('disabled');
+            $('#nav-' + sections[currentSection].name).removeClass ('disabled');
             
             if (currentSection == (sections.length - 1))
             {
@@ -406,7 +404,7 @@
           for (var count = 0; count < (sections.length - 1); count++)
           {
             targetSection++;
-            if (sections[targetSection] == clicked) break;
+            if (sections[targetSection].name == clicked) break;
           }
           
           if (targetSection == currentSection) return;
@@ -431,11 +429,11 @@
    **/
   function hideSection (section)
   {
-    $('#section-' + sections[section]).addClass ('section-hide');
+    $('#section-' + sections[section].name).addClass ('section-hide');
     
     setTimeout (function ()
     {
-      $('#section-' + sections[section]).addClass ('hide');
+      $('#section-' + sections[section].name).addClass ('hide');
     }, 1000);
   };
   
@@ -447,12 +445,12 @@
     //Note: timing must be staggered for animation to trigger successfully
     setTimeout (function ()
     {
-      $('#section-' + sections[section]).removeClass ('hide');
+      $('#section-' + sections[section].name).removeClass ('hide');
     }, 975);
     
     setTimeout (function ()
     {
-      $('#section-' + sections[section]).removeClass ('section-hide');
+      $('#section-' + sections[section].name).removeClass ('section-hide');
     }, 1000);
   };
   
@@ -498,7 +496,7 @@
     $.each (sections, function (index, section)
     {
       //Iterate through every visible question in this section
-      $('#section-' + section + ' .question-wrapper.visible-question').each (function (questionIndex)
+      $('#section-' + section.name + ' .question-wrapper.visible-question').each (function (questionIndex)
       {
         key = $(this).prop ('id');
         values = new Array ();

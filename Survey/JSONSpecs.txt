@@ -26,7 +26,6 @@ Option element:
 Enable element:
 - "type" (string) -> "section" or "question"
 - "name" (string) -> Name of the section or code of the question to enable
-- "position" (int) -> Required if type == section; position at which this section will be added to the navigation array
 
 Disable element:
 - "type" (string) -> "section" or "question"

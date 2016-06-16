@@ -21,8 +21,7 @@
               [
                 {
                   "type": "section",
-                  "name": "cs",
-                  "position": 3
+                  "name": "cs"
                 }
               ],
               "disables": []
@@ -49,8 +48,7 @@
               [
                 {
                   "type": "section",
-                  "name": "gm",
-                  "position": 3
+                  "name": "gm"
                 }
               ],
               "disables": []
