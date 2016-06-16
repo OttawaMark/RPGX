@@ -56,3 +56,28 @@ scripts folder. To install a new bower package, use:
 
 `--save` saves the dependency to bower.json so it can be included the next time dependencies are
 fetched.
+
+##Development
+
+Development can be done using the grunt server, which includes livereload:
+
+```
+>grunt serve
+```
+
+Any changes made to watched directories will automatically propagate into the app, so testing can
+be done in real time.
+
+##Deployment
+
+To create a deployment build, use:
+
+```
+>grunt build
+```
+
+This compiles, concatenates, and minifies all SASS and script files associated with the project
+(note that packaged dependencies and local scripts are packaged separately), placing them in
+appropriate analog directories within `/dist`. If this project were to be placed directly on a
+server, it would be sufficient to point the host at this directory, however the contents can be
+extracted and used elsewhere without issue, as after building the project is self-contained.
