@@ -54,5 +54,5 @@ scripts folder. To install a new bower package, use:
 >bower install {package_name}(#{build}) --save
 ```
 
-`--save-- saves the dependency to bower.json so it can be included the next time dependencies are
+`--save` saves the dependency to bower.json so it can be included the next time dependencies are
 fetched.
