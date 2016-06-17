@@ -356,8 +356,11 @@
           if (currentSection < (sections.length - 1))
           {
             hideSection (currentSection);
-            currentSection++;
+            
+            while (!sections[++currentSection].enabled);
+            
             showSection (currentSection);
+            
             $('.nav-previous').removeClass ('disabled');
             
             //Enable a specific section the first time the user navigates to it
@@ -380,8 +383,11 @@
           if (currentSection > 0)
           {
             hideSection (currentSection);
-            currentSection--;
+            
+            while (!sections[--currentSection].enabled);
+            
             showSection (currentSection);
+            
             $('.nav-next').removeClass ('disabled');
             
             if (currentSection == 0)
@@ -508,7 +514,7 @@
           
           if (tmp.is ('textarea'))
           {
-            values.push (tmp.val ());
+            values.push (sanitizeJSON (tmp.val ()));
           }
           else if (tmp.is ('input[type=checkbox]'))
           {
@@ -539,8 +545,8 @@
     });
     
     //DEBUG
-    //console.log (responses);
-    //console.log (sanitizeJSON (JSON.stringify (responses)));
+    console.log (responses);
+    console.log (JSON.stringify (responses));
     
     //TODO: Call to web service
   });
