@@ -21,8 +21,7 @@
               [
                 {
                   "type": "section",
-                  "name": "cs",
-                  "position": 3
+                  "name": "cs"
                 }
               ],
               "disables": []
@@ -49,8 +48,7 @@
               [
                 {
                   "type": "section",
-                  "name": "gm",
-                  "position": 3
+                  "name": "gm"
                 }
               ],
               "disables": []
@@ -970,6 +968,189 @@
       ]
     },
     {
+      "name": "cs",
+      "title": "Community Supporters",
+      "code": "CS",
+      "enabled": false,
+      "questions":
+      [
+        {
+          "questionText": "If you have a monthly subscription, why do you have a monthly subscription instead of a yearly subcription?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "questionText": "What do you like most about being a CS (select all that apply)?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "Increased avatar image size",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Mobile GUI",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Increased PM mailbox size",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Increased game folder control",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Hall of fame voting",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Custom user titles",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Prestige of a green name",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Getting into more games",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "I get a lot out of this site, and it's cheap compared to the returns",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "The site supporting the Brain and Behaviour Research Foundation in the December drive",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "Do you use the mobile GUI?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "exclusive",
+              "value": "Yes",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "exclusive",
+              "value": "No",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What additional CS features would you like?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "non-exclusive",
+              "value": "More RPXP hits per day",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Ability to award more RPXP per hit",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "The ability for GMs to customize the look of their game forums",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "A higher tier of CS to give the site more support, with additional perks",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Better support for putting all of a GM's games into a master folder",
+              "specify": false,
+              "enables": [],
+              "disables": []
+            },
+            {
+              "type": "non-exclusive",
+              "value": "Other",
+              "specify": true,
+              "enables": [],
+              "disables": []
+            }
+          ]
+        },
+        {
+          "questionText": "What would most improve your experience as a CS?",
+          "visible": true,
+          "options":
+          [
+            {
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "gm",
       "title": "Game Masters",
       "code": "GM",
@@ -1421,189 +1602,6 @@
               "specify": false,
               "enables": [],
               "disables": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "cs",
-      "title": "Community Supporters",
-      "code": "CS",
-      "enabled": false,
-      "questions":
-      [
-        {
-          "questionText": "If you have a monthly subscription, why do you have a monthly subscription instead of a yearly subcription?",
-          "visible": true,
-          "options":
-          [
-            {
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "questionText": "What do you like most about being a CS (select all that apply)?",
-          "visible": true,
-          "options":
-          [
-            {
-              "type": "non-exclusive",
-              "value": "Increased avatar image size",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Mobile GUI",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Increased PM mailbox size",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Increased game folder control",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Hall of fame voting",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Custom user titles",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Prestige of a green name",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Getting into more games",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "I get a lot out of this site, and it's cheap compared to the returns",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "The site supporting the Brain and Behaviour Research Foundation in the December drive",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Other",
-              "specify": true,
-              "enables": [],
-              "disables": []
-            }
-          ]
-        },
-        {
-          "questionText": "Do you use the mobile GUI?",
-          "visible": true,
-          "options":
-          [
-            {
-              "type": "exclusive",
-              "value": "Yes",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "exclusive",
-              "value": "No",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            }
-          ]
-        },
-        {
-          "questionText": "What additional CS features would you like?",
-          "visible": true,
-          "options":
-          [
-            {
-              "type": "non-exclusive",
-              "value": "More RPXP hits per day",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Ability to award more RPXP per hit",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "The ability for GMs to customize the look of their game forums",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "A higher tier of CS to give the site more support, with additional perks",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Better support for putting all of a GM's games into a master folder",
-              "specify": false,
-              "enables": [],
-              "disables": []
-            },
-            {
-              "type": "non-exclusive",
-              "value": "Other",
-              "specify": true,
-              "enables": [],
-              "disables": []
-            }
-          ]
-        },
-        {
-          "questionText": "What would most improve your experience as a CS?",
-          "visible": true,
-          "options":
-          [
-            {
-              "type": "text"
             }
           ]
         }
