@@ -11,6 +11,20 @@ $colour-grey: #CCC;
 $colour-grey-dark: #333;
 
 //-- Elements ---------------
+.survey-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+
+td, th {
+  padding: 4px;
+}
+
 a.disabled,
 input.disabled
 {
