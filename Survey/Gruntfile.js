@@ -304,7 +304,7 @@ module.exports = function (grunt) {
     // cssmin: {
     //   dist: {
     //     files: {
-    //       '<%= config.dist %>/styles/main.css': [
+    //       '<%= config.dist %>/styles/survey-styles.css': [
     //         '.tmp/styles/{,*/}*.css',
     //         '<%= config.app %>/styles/{,*/}*.css'
     //       ]
