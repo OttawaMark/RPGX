@@ -339,12 +339,6 @@ module.exports = function (grunt) {
             'styles/fonts/{,*/}*.*',
             'questions.json'
           ]
-        }, {
-          expand: true,
-          dot: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
-          dest: '<%= config.dist %>'
         }]
       }
     },

@@ -1,5 +1,4 @@
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 //-- Variables --------------
@@ -13,6 +12,10 @@ $colour-grey-dark: #333;
 .rpgx-survey
 {
   //-- Elements ---------------
+  * {
+    box-sizing: border-box;
+  }
+  
   a.disabled,
   input.disabled
   {
@@ -94,6 +97,10 @@ $colour-grey-dark: #333;
   }
 
   //-- Classes ----------------
+  .hide {
+    display: none !important;
+  }
+  
   .invisible-question
   {
     border: none !important;
