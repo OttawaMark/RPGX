@@ -15,7 +15,19 @@ $colour-grey-dark: #333;
   * {
     box-sizing: border-box;
   }
-  
+
+  table
+  {
+    border-collapse: separate;
+    border-spacing: 1px;
+    
+    td, th
+    {
+      padding: 4px;
+    }
+  }
+
+  //-- Elements ---------------
   a.disabled,
   input.disabled
   {
@@ -59,9 +71,9 @@ $colour-grey-dark: #333;
   {
     display: inline-block;
     margin-left: 1rem;
-    
+
     -webkit-transition: width 0.5s ease;
-            transition: width 0.5s ease;
+    transition: width 0.5s ease;
   }
 
   label
@@ -69,7 +81,7 @@ $colour-grey-dark: #333;
     display: inline;
     margin: 0;
     vertical-align: middle;
-    
+
     &[for]
     {
       cursor: pointer;
@@ -79,9 +91,9 @@ $colour-grey-dark: #333;
   section
   {
     opacity: 1.0;
-    
+
     -webkit-transition: opacity 1s ease;
-            transition: opacity 1s ease;
+    transition: opacity 1s ease;
   }
 
   textarea
@@ -115,25 +127,25 @@ $colour-grey-dark: #333;
     cursor: pointer;
     display: inline-block;
     margin: 0 5px;
-    
+
     -webkit-transition: background-color 0.25s ease;
-            transition: background-color 0.25s ease;
-    
+    transition: background-color 0.25s ease;
+
     -webkit-transition: width 0.5s ease;
-            transition: width 0.5s ease;
-    
+    transition: width 0.5s ease;
+
     &:active,
     &:focus,
     &:hover
     {
       background-color: $colour-beige;
     }
-    
+
     &.disabled
     {
       background-color: $colour-grey;
     }
-    
+
     &.shrunk
     {
       margin: 0 -2.5px !important;
@@ -150,15 +162,15 @@ $colour-grey-dark: #333;
     height: 0;
     margin: 0;
     width: 0;
-    
+
     -webkit-transition: border-color 0.25s ease;
-            transition: border-color 0.25s ease;
-    
+    transition: border-color 0.25s ease;
+
     &.disabled
     {
       border-color: transparent transparent transparent $colour-grey;
     }
-    
+
     &:active,
     &:focus,
     &:hover
@@ -176,15 +188,15 @@ $colour-grey-dark: #333;
     height: 0;
     margin: 0;
     width: 0;
-    
+
     -webkit-transition: border-color 0.25s ease;
-            transition: border-color 0.25s ease;
-    
+    transition: border-color 0.25s ease;
+
     &.disabled
     {
       border-color: transparent $colour-grey transparent transparent;
     }
-    
+
     &:active,
     &:focus,
     &:hover
@@ -222,10 +234,10 @@ $colour-grey-dark: #333;
     padding: 1rem;
     text-align: center;
     width: 80%;
-    
+
     -webkit-transition: max-height 0.5s ease;
-            transition: max-height 0.5s ease;
-    
+    transition: max-height 0.5s ease;
+
     .option
     {
       margin: 0.25rem auto;
@@ -239,7 +251,7 @@ $colour-grey-dark: #333;
     .question-wrapper
     {
       width: 100%;
-      
+
       .option
       {
         width: 95%;
@@ -257,13 +269,20 @@ $colour-grey-dark: #333;
     border: none;
     padding: 2px 0;
     width: 0;
-    
+
     &.active
     {
       border: 1px solid $colour-grey-dark;
       padding: 1px 5px;
       width: 150px;
     }
+  }
+  
+  .survey-container
+  {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
   }
 
   .visible-question

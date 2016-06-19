@@ -57,7 +57,7 @@ scripts folder. To install a new bower package, use:
 `--save` saves the dependency to bower.json so it can be included the next time dependencies are
 fetched.
 
-##Development
+##Development (Original)
 
 Development can be done using the grunt server, which includes livereload:
 
@@ -86,3 +86,9 @@ This compiles, concatenates, and minifies all SASS and script files associated w
 appropriate analog directories within `/dist`. If this project were to be placed directly on a
 server, it would be sufficient to point the host at this directory, however the contents can be
 extracted and used elsewhere without issue, as after building the project is self-contained.
+
+##Development (templated)
+
+Since the index file is no longer standalone, the grunt server cannot be used to test and compile
+in the local environment. Development of survey functionality whould be done on the clean
+`master-dev` branch and merged in manually.
