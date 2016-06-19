@@ -528,7 +528,7 @@
               
               if (tmp.length)
               {
-                tmpValue += ' (' + tmp.val () + ')';
+                tmpValue += ' (' + sanitizeJSON (tmp.val ()) + ')';
               }
               
               values.push (tmpValue);
@@ -546,34 +546,39 @@
     // MUST ADD SECURITY TOKEN TO RESPONSE
     
     //DEBUG
-    console.log (responses);
-    console.log (sanitizeJSON (JSON.stringify (responses)));
+    // console.log (responses);
+    // console.log (JSON.stringify (responses));
     
     //TODO: Call to web service
-    //
     //nonfunctional birched code starts here
-$.ajax({
-   url: 'survey.php?do=add_answers',
-   type: 'POST',
-   contentType:'application/json',
-   data: sanitizeJSON (JSON.stringify(responses)),
-   dataType:'text',
-   success: function(responses){
-     //On ajax success do this
-     alert(responses);
+    //NOTE: It might not be necessary to stringify the responses set if we make the datatype JSON
+    $.ajax({
+      url: 'survey.php?do=add_answers',
+      type: 'POST',
+      contentType:'application/json',
+      data: JSON.stringify(responses),
+      dataType:'text',
+      success: function (response)
+      {
+        //On ajax success do this
+        alert (response);
       },
-   error: function(xhr, ajaxOptions, thrownError) {
-      //On error do this
-//        $.mobile.loading('hide')
-        if (xhr.status == 200) {
-
-            alert(ajaxOptions);
+      error: function (xhr, ajaxOptions, thrownError)
+      {
+        //On error do this
+        // $.mobile.loading('hide')
+        if (xhr.status == 200)
+        {
+          //DEBUG
+          alert (ajaxOptions);
         }
-        else {
-            alert(xhr.status);
-            alert(thrownError);
+        else
+        {
+          //DEBUG
+          alert (xhr.status);
+          alert (thrownError);
         }
-    }
- });
+      }
+     });
   });
 })();
