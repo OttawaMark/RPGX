@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="custom_survey_rpgx" active="1">
+	<title>RPG Crossing Survey</title>
+	<description>On site survey code</description>
+	<version>0.1</version>
+	<url />
+	<versioncheckurl />
+	<dependencies>
+	</dependencies>
+	<codes>
+	</codes>
+	<templates>
+		<template name="rpgx_survey_main" templatetype="template" date="1466187163" username="Birched" version="0.1"><![CDATA[<!doctype html>
+<html class="no-js" lang="">
+  <head>
+<link rel="stylesheet" href="survey/styles/main.b60165f7.css" type="text/css" /> 
+<title>$vbphrase[rpgx_survey] - $vboptions[bbtitle]</title>
+$headinclude
+
+
+
+<script src="survey/scripts/vendor/modernizr.fbe20327.js"></script> 
+
+</head>
+<body>
+$header
+
+$navbar
+
+<table class="tborder" cellpadding="$stylevar[cellpadding]" cellspacing="$stylevar[cellspacing]" border="0" width="100%" align="center">
+<tr>
+	<td class="tcat">
+
+		$vbphrase[rpgx_survey]
+	</td>
+</tr>
+<tr><td>
+
+    <div class="survey-container rpgx-survey">
+      <div class="survey-body">
+        <form action="survey.php?do=add_answers" method="post">
+          <input type="hidden" name="s" value="$session[sessionhash]" />
+          <input type="hidden" name="securitytoken" value="$bbuserinfo[securitytoken]" />
+          <input type="hidden" name="do" value="add_answers" />
+
+$survey_html
+</td></tr></table>
+$footer
+</body>
+</html>]]></template>
+	</templates>
+	<plugins>
+	</plugins>
+	<phrases>
+		<phrasetype name="GLOBAL" fieldname="global">
+			<phrase name="rpgx_survey" date="1464809154" username="Birched" version="0.1"><![CDATA[RPG Crossing Survey]]></phrase>
+		</phrasetype>
+	</phrases>
+	<options>
+	</options>
+	<helptopics>
+	</helptopics>
+	<cronentries>
+	</cronentries>
+	<faqentries>
+	</faqentries>
+	<templateedits>
+	</templateedits>
+</product>

@@ -1,0 +1,6 @@
+survey.php resides in the root vBulletin public_html directory
+the remaining files are in a 'survey' directory in the same directory
+(currently installed via symbolic link to dist)
+
+product-custom_survey_rpgx-2.xml is a save file of the 'product' for
+vBulletin and includes the rpgx_survey_main template html
