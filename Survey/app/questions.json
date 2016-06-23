@@ -1,4 +1,9 @@
 {
+  "surveyInfo":
+    {
+      "name": "surveyInfo",
+      "id": "1"
+    },
   "sections":
   [
     {
