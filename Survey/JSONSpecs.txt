@@ -1,6 +1,13 @@
 -- Specifications for questions object model ----------------------------------
+Root element A:
+- surveyInfo -> Array of elements to define survey uniquely
 
-Root element:
+surveyInfo element:
+- name (string) -> non-critical unique identifier, not stored in DB
+- id (string) -> should be an integer; unique identifier for this survey in
+  the DB
+
+Root element B:
 - "sections" (object[]) -> Array of Section elements to represent the various sections in the survey
 
 Section element:
