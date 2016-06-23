@@ -10,14 +10,14 @@ $colour-brown: #3F3034;
 $colour-grey: #CCC;
 $colour-grey-dark: #333;
 
+.survey-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
 .rpgx-survey
 {
   //-- Elements ---------------
-  .survey-container {
-    width: 800px;
-    margin: 0 auto;
-  }
-
   table {
     border-collapse: separate;
     border-spacing: 1px;
