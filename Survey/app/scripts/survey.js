@@ -450,9 +450,10 @@
           {
             console.error (e);
             console.error ('Survey questions malformed. (' + lastItem.type + ', ' + lastItem.qualifier + ')');
-                }
-                });
-            return true;
+          }
+      });
+      
+      return true;
   }
 
   /**
@@ -497,8 +498,8 @@
       .replace(/\r/g, "\\r")
       .replace(/\t/g, "\\t")
       .replace(/\f/g, "\\f")
-      .replace(/"/g,"\\\"")
-      .replace(/'/g,"\\\'")
+      .replace(/"/g,  "\\\"")
+      .replace(/'/g,  "\\\'")
       .replace(/\&/g, "\\&"); 
   }
 
@@ -514,30 +515,33 @@
           else
           setTimeout(populateStart, 250);
           }*/
+    
     buildSurvey ();
-
   });
 
 
   /**
    * Submits the questionnaire data to the server for processing.
    **/
-  $('form').on('submit', function (e) {
+  $('form').on('submit', function (e)
+  {
     e.preventDefault();
-
-
+    
     //Prevent erroneous input
     $('nav').addClass ('hide');
+    
     // DEBUG -- allows the same page to run multiple times
     //$('input[type=submit]').addClass ('disabled');
     //
+    
     saveSurveySoFar (true);
   });
 
-  function populateSurvey () {
-
+  function populateSurvey ()
+  {
     // add unique ID from json survey file
     var returnString = '&surveyID=' + $('input[name=surveyID]').val();
+    
     // add vBulletin's security token
     returnString += '&securitytoken=' + $('input[name=securitytoken]').val();
 
@@ -561,14 +565,12 @@
         }
       }
     });
-
-
   }
 
   // given an array, go through the questions in the survey and fill in the answer if it exists in the responses data set
-  function fillInResponses( responses ) {
+  function fillInResponses( responses )
+  {
     var qID, answerNum, mainQ;
-
 
     // CHECKBOXES
 
@@ -617,12 +619,12 @@
     });
   }
 
-  function saveSurveySoFar (formDone) {
+  function saveSurveySoFar (formDone)
+  {
     formDone = typeof formDone !== 'undefined' ? formDone : false;
 
     var responses = {};
     var key, values, tmp, tmpValue;
-
 
     //Iterate through each named section which is enabled
     $.each (sections, function (index, section)
@@ -669,13 +671,16 @@
                               responses[key] = values;
               });
         });
+    
     //DEBUG
     //console.log (responses);
     //console.log (JSON.stringify (responses));
 
     var returnString = '&surveyresponses=' + JSON.stringify (responses);
+    
     // add unique ID from json survey file
     returnString += '&surveyID=' + $('input[name=surveyID]').val();
+    
     // add vBulletin's security token
     returnString += '&securitytoken=' + $('input[name=securitytoken]').val();
 
