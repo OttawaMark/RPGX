@@ -1,5 +1,4 @@
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 //-- Variables --------------
@@ -18,13 +17,19 @@ $colour-grey-dark: #333;
 .rpgx-survey
 {
   //-- Elements ---------------
-  table {
-    border-collapse: separate;
-    border-spacing: 1px;
+  * {
+    box-sizing: border-box;
   }
 
-  td, th {
-    padding: 4px;
+  table
+  {
+    border-collapse: separate;
+    border-spacing: 1px;
+    
+    td, th
+    {
+      padding: 4px;
+    }
   }
 
   //-- Elements ---------------
@@ -109,6 +114,10 @@ $colour-grey-dark: #333;
   }
 
   //-- Classes ----------------
+  .hide {
+    display: none !important;
+  }
+  
   .invisible-question
   {
     border: none !important;
@@ -272,6 +281,13 @@ $colour-grey-dark: #333;
       padding: 1px 5px;
       width: 150px;
     }
+  }
+  
+  .survey-container
+  {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
   }
 
   .visible-question

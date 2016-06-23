@@ -304,7 +304,7 @@ module.exports = function (grunt) {
     // cssmin: {
     //   dist: {
     //     files: {
-    //       '<%= config.dist %>/styles/main.css': [
+    //       '<%= config.dist %>/styles/survey-styles.css': [
     //         '.tmp/styles/{,*/}*.css',
     //         '<%= config.app %>/styles/{,*/}*.css'
     //       ]
@@ -339,32 +339,26 @@ module.exports = function (grunt) {
             'styles/fonts/{,*/}*.*',
             'questions.json'
           ]
-        }, {
-          expand: true,
-          dot: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
-          dest: '<%= config.dist %>'
         }]
       }
     },
 
     // Generates a custom Modernizr build that includes only the tests you
     // reference in your app
-    modernizr: {
-      dist: {
-        devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
-        files: {
-          src: [
-            '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
-            '!<%= config.dist %>/scripts/vendor/*'
-          ]
-        },
-        uglify: true
-      }
-    },
+    // modernizr: {
+    //   dist: {
+    //     devFile: 'bower_components/modernizr/modernizr.js',
+    //     outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
+    //     files: {
+    //       src: [
+    //         '<%= config.dist %>/scripts/{,*/}*.js',
+    //         '<%= config.dist %>/styles/{,*/}*.css',
+    //         '!<%= config.dist %>/scripts/vendor/*'
+    //       ]
+    //     },
+    //     uglify: true
+    //   }
+    // },
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
@@ -431,10 +425,10 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    'modernizr',
+    // 'modernizr',
     'filerev',
-    'usemin',
-//    'htmlmin'
+    'usemin'
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
