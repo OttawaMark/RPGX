@@ -434,7 +434,7 @@ module.exports = function (grunt) {
     'modernizr',
     'filerev',
     'usemin',
-    'htmlmin'
+//    'htmlmin'
   ]);
 
   grunt.registerTask('default', [
