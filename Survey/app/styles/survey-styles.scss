@@ -2,8 +2,6 @@
 // endbower
 
 //-- Variables --------------
-$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-
 $colour-beige: #AF8054;
 $colour-brown: #3F3034;
 $colour-grey: #CCC;
@@ -77,8 +75,8 @@ $colour-grey-dark: #333;
     display: inline-block;
     margin-left: 1rem;
 
-    -webkit-transition: width 0.5s ease;
-    transition: width 0.5s ease;
+    //-webkit-transition: width 0.5s ease 0.5s;
+    //transition: width 0.5s ease 0.5s;
   }
 
   label
@@ -230,6 +228,11 @@ $colour-grey-dark: #333;
     text-align: left;
   }
 
+  .question
+  {
+    text-align: left;
+  }
+
   .question-wrapper
   {
     border: 1px solid $colour-grey;
@@ -279,7 +282,7 @@ $colour-grey-dark: #333;
     {
       border: 1px solid $colour-grey-dark;
       padding: 1px 5px;
-      width: 150px;
+      width: 400px;
     }
   }
   
