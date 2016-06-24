@@ -190,7 +190,12 @@
             //console.log (navString);
             //console.log (surveyString);
 
+
             //Add handlers after elements are created
+
+            $('form').change(function() {
+                  saveSurveySoFar();
+            });
 
             /**
              * Handles logic for questions with both exclusive responses. If an exclusive option is selected,
@@ -392,6 +397,7 @@
                     }
                   }
                   saveSurveySoFar();
+                  $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
                 });
 
             /**
@@ -417,6 +423,7 @@
                     }
                   }
                   saveSurveySoFar();
+                  $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
                 });
 
             /**
@@ -441,6 +448,7 @@
                   currentSection = targetSection;
                   showSection (currentSection);
                   saveSurveySoFar();
+                  $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
                 });
 
             $('.nav-next').removeClass ('disabled');
