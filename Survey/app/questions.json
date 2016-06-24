@@ -720,7 +720,7 @@
           ]
         },
         {
-          "questionText": "How satisfied are you with our mobile GUI?",
+          "questionText": "How satisfied are you with our mobile GUI (CS only)?",
           "visible": true,
           "options":
           [
