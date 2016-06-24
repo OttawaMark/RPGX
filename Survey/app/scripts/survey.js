@@ -184,7 +184,6 @@
             $('#nav-wrapper').html (navString);
             $('#generated-questions').html (surveyString);
 
-            populateSurvey();
 
             //DEBUG
             //console.log (sections);
@@ -445,6 +444,9 @@
                 });
 
             $('.nav-next').removeClass ('disabled');
+
+            // fill in existing data
+            populateSurvey();
           }
           catch (e)
           {
@@ -452,6 +454,7 @@
             console.error ('Survey questions malformed. (' + lastItem.type + ', ' + lastItem.qualifier + ')');
                 }
                 });
+
             return true;
   }
 
@@ -506,16 +509,7 @@
    * Runs when the document has loaded
    **/
   $(document).ready (function () {
-    /*    var surveyBuilt = false;
-          surveyBuilt = buildSurvey ();
-          function populateStart() {
-          if (surveyBuilt)
-          populateSurvey()
-          else
-          setTimeout(populateStart, 250);
-          }*/
     buildSurvey ();
-
   });
 
 
@@ -588,9 +582,10 @@
         if (bits && bits[1] == answerNum)
         {
           $(mainQ).prop ('checked', true);
+          // trigger change events
+          $(mainQ).trigger('change');
           if (bits[3]) {
             $("input[id='txt" + mainQ.id.substring(3) + "']").val(bits[3]);
-            $("input[id='txt" + mainQ.id.substring(3) + "']").addClass('active');
           }
           return;
         }
@@ -613,6 +608,8 @@
       if (responses[qID] && responses[qID][0])
       {
         $(mainQ).val(responses[qID][0]);
+        // trigger change events
+        $(mainQ).trigger('change');
       }
     });
   }
