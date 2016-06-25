@@ -93,23 +93,9 @@ else if ($_REQUEST['do'] == 'load_data')
   ));
 
 
-  // REMOVE ME
-  require_once(DIR . '/includes/functions_log_error.php');
-
-  // pull existing survey results if any from the DB
-  $resultsFromDB = $db->query_read("
-    SELECT questionid, answer FROM " . TABLE_PREFIX . "survey
-    WHERE userid = " . $vbulletin->userinfo[userid] . " AND surveyID =" . $vbulletin->GPC['surveyID'] 
-  );
-
-  $existingResults = array();
-  while ($array = $db->fetch_array($resultsFromDB))
-    $existingResults[$array['questionid']] = explode(',,,',$array['answer']);
-  log_vbulletin_error(print_r($existingResults, true), 'php');
-
   // encode into json
   // note for future: better to pass a CLASS instance back to json: https://www.html5andbeyond.com/jquery-ajax-json-php/
-  $json = json_encode($existingResults);
+  $json = json_encode(getExistingResults($db, $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]));
 
   //Return the json string to the client
   echo $json;
@@ -129,16 +115,29 @@ else if ($_REQUEST['do'] == 'add_answers')
   if (!$vbulletin->GPC['ajax'])
     print_no_permission();
 
-  // recover array of answers
+  // recover array of answers from script
   $response_r = json_decode($vbulletin->GPC['surveyresponses'], true);
+
+  // DEBUG
+  // require_once(DIR . '/includes/functions_log_error.php');
+
+  // get stored answers from the DB
+  $storedAnswers = getExistingResults($db, $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]);
 
   // for each question and answer, stick it in the DB
   // note that the timestamp will always be the same for ALL answers as currently coded
   //  an alternative would be to read the current answers and online record dates when they are changed
   foreach ( $response_r as $question => $answer )
   {
-    $question = $db->escape_string($question);
-    $answer = $db->escape_string(implode(',,,', $answer));
+    $answer = implode(',,,', $answer);
+
+    // only record changed answers
+    if (implode(',,,',$storedAnswers[$question]) == stripslashes($answer) )
+      continue;
+
+    // DEBUG
+    // log_vbulletin_error("not skipping $question with answer" . stripslashes($answer), 'php');
+    // log_vbulletin_error("compare to " . implode(',,,',$storedAnswers[$question]), 'php');
 
     $db->query_write("
       INSERT INTO " . TABLE_PREFIX . "survey (userid, surveyid, dateline, questionid, answer)
@@ -150,7 +149,25 @@ else if ($_REQUEST['do'] == 'add_answers')
   // returning from AJAX call to fill field on form
   // valid HTML message text.
   echo '<p style="text-align:center;color:maroon;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!
-      <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.</p>';
+    <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.</p>';
   return;
-} else { echo $_REQUEST['do']; echo 'bad location'; }
+} else { 
+  print_no_permission();
+}
+
+
+// call with $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]
+function getExistingResults($db, $surveyID, $userID) {
+
+  // pull existing survey Nesults if any from the DB
+  $resultsFromDB = $db->query_read("
+    SELECT questionid, answer FROM " . TABLE_PREFIX . "survey
+    WHERE userid = $userID AND surveyID = $surveyID"
+  );
+
+  $existingResults = array();
+  while ($array = $db->fetch_array($resultsFromDB))
+    $existingResults[stripslashes($array['questionid'])] = explode(',,,',stripslashes($array['answer']));
+  return $existingResults;
+}
 ?>
