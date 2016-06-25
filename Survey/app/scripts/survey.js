@@ -531,9 +531,8 @@
     //Prevent erroneous input
     $('nav').addClass ('hide');
     
-    // DEBUG -- allows the same page to run multiple times
-    //$('input[type=submit]').addClass ('disabled');
-    //
+    // DEBUG -- comment the following line to allow the same page to run multiple times
+    $('input[type=submit]').addClass ('disabled');
     
     saveSurveySoFar (true);
   });
@@ -696,7 +695,7 @@
       success: function(responses){
         if (formDone)
           //On ajax success do this
-          $( "#successMessage" ).append( responses );
+          $( "#successMessage" ).html( responses );
       },
       error: function(xhr, ajaxOptions, thrownError) {
         //On error do this

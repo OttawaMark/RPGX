@@ -149,7 +149,8 @@ else if ($_REQUEST['do'] == 'add_answers')
 
   // returning from AJAX call to fill field on form
   // valid HTML message text.
-  echo '<p style="text-align:center;color:maroon;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!<br /></p>';
+  echo '<p style="text-align:center;color:maroon;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!
+      <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.</p>';
   return;
 } else { echo $_REQUEST['do']; echo 'bad location'; }
 ?>
