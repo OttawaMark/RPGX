@@ -64,6 +64,10 @@ require_once('./global.php');
 if (!$vbulletin->userinfo['userid']) // we must be logged in
   print_no_permission();
 
+// for testing: only admins, mods, and Daq
+if (!($vbulletin->userinfo['usergroupid']==6 OR $vbulletin->userinfo['usergroupid']==5 OR $vbulletin->userinfo['userid']==65324 OR $vbulletin->userinfo['userid']==25962))
+  print_no_permission();
+
 if(($_REQUEST['do'] == '' || !isset($_REQUEST['do'])))
 {
   // script with no parameters
