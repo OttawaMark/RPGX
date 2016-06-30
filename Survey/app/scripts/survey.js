@@ -184,15 +184,14 @@
               $('#nav-wrapper').html (navString);
               $('#generated-questions').html (surveyString);
 
-
               //DEBUG
               //console.log (sections);
               //console.log (navString);
               //console.log (surveyString);
 
               /**
-               * Handles logic for questions with both exclusive responses. If an exclusive option is selected,
-               * all other options should be deselected.
+               * Handles logic for questions with exclusive responses. If an exclusive option is
+               * selected, all other options should be deselected.
                * 
                * Structure:
                *    <wrapper>
@@ -442,16 +441,15 @@
                   });
 
               $('.nav-next').removeClass ('disabled');
-
-
             }
             catch (e)
             {
               console.error (e);
               console.error ('Survey questions malformed. (' + lastItem.type + ', ' + lastItem.qualifier + ')');
-                  }
-                  });
+            }
+        });
     }
+    
     // given an array, go through the questions in the survey and fill in the answer if it exists in the responses data set
     function fillInResponses( responses )
     {
@@ -713,7 +711,6 @@
    **/
   $(document).ready (function () {
     buildSurvey();
-
   });
 
 })();
