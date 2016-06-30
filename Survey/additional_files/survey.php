@@ -64,6 +64,9 @@ require_once('./global.php');
 if (!$vbulletin->userinfo['userid']) // we must be logged in
   print_no_permission();
 
+if (!($vbulletin->userinfo['userid'] == 14566))
+  print_no_permission();
+
 // for testing: only admins, mods, and Daq
 if (!($vbulletin->userinfo['usergroupid']==6 OR $vbulletin->userinfo['usergroupid']==5 OR $vbulletin->userinfo['userid']==65324 OR $vbulletin->userinfo['userid']==25962))
   print_no_permission();
@@ -93,6 +96,10 @@ else if ($_REQUEST['do'] == 'load_data')
   ));
 
 
+  //require_once(DIR . '/includes/functions_log_error.php');
+
+  //log_vbulletin_error('load data called with surveyID = ' . $vbulletin->GPC['surveyID'], 'php');
+
   // encode into json
   // note for future: better to pass a CLASS instance back to json: https://www.html5andbeyond.com/jquery-ajax-json-php/
   $json = json_encode(getExistingResults($db, $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]));
@@ -115,11 +122,14 @@ else if ($_REQUEST['do'] == 'add_answers')
   if (!$vbulletin->GPC['ajax'])
     print_no_permission();
 
+  // DEBUG
+  //require_once(DIR . '/includes/functions_log_error.php');
+
+  //log_vbulletin_error($vbulletin->GPC['surveyresponses'], 'php');
   // recover array of answers from script
   $response_r = json_decode($vbulletin->GPC['surveyresponses'], true);
+  //log_vbulletin_error(print_r($response_r, true), 'php');
 
-  // DEBUG
-  // require_once(DIR . '/includes/functions_log_error.php');
 
   // get stored answers from the DB
   $storedAnswers = getExistingResults($db, $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]);
@@ -136,8 +146,12 @@ else if ($_REQUEST['do'] == 'add_answers')
       continue;
 
     // DEBUG
-    // log_vbulletin_error("not skipping $question with answer" . stripslashes($answer), 'php');
-    // log_vbulletin_error("compare to " . implode(',,,',$storedAnswers[$question]), 'php');
+    //log_vbulletin_error("not skipping $question with answer" . stripslashes($answer), 'php');
+    //log_vbulletin_error("compare to " . implode(',,,',$storedAnswers[$question]), 'php');
+
+    $question = $db->escape_string($question);
+    $answer = $db->escape_string($answer); // just in case; expect nothing to escape here
+    //log_vbulletin_error($question . ' : ' . $answer, 'php');
 
     $db->query_write("
       INSERT INTO " . TABLE_PREFIX . "survey (userid, surveyid, dateline, questionid, answer)
@@ -151,6 +165,18 @@ else if ($_REQUEST['do'] == 'add_answers')
   echo '<p style="text-align:center;color:maroon;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!
     <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.</p>';
   return;
+}
+else if ($_REQUEST['do'] == 'view_results')
+{
+  // pull data from DB into array
+  // load data into arrays for display - for each, specify chart type and all data
+  // PROBLEM: answer type is not specified! (exclusive vs non-exclusive vs. text)
+  // if exclusive, no text: show pie chart OR bar chart showing % who selected a given answer
+  // if exclusive with text: show pie chart with * to fields with lists of similar terms, and spoilerbutton type display of all terms
+  // if non-exclusive... bar chart showing % of users who selected a given answer? (if sum > 100 then indicate multi answer?)
+  // if non-exclusive with text: bar chart with *
+  // if text box -- word jumble, with all answers in drop down?
+  //
 } else { 
   print_no_permission();
 }
