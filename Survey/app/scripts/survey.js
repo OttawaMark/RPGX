@@ -158,6 +158,13 @@
                                   }
 
                                   surveyString += ' />\n';
+                                  
+                                  //Fancy checkboxes
+                                  surveyString += '<label ';
+                                  surveyString += 'for="chkQ' + section.code + '' + questionIndex + '_' + optionIndex + '">';
+                                  surveyString += '</label>\n';
+                                  
+                                  //Question text
                                   surveyString += '<label ';
                                   surveyString += 'for="chkQ' + section.code + '' + questionIndex + '_' + optionIndex + '">';
                                   surveyString += option.value + '</label>\n';

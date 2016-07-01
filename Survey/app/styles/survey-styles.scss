@@ -63,6 +63,52 @@ $colour-grey-dark: #333;
     cursor: pointer;
     margin: 0 0 0 10px;
     vertical-align: middle;
+    visibility: hidden;
+    
+    & + label
+    {
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #999;
+      display: inline-block;
+      height: 14px;
+      margin-bottom: 2px;
+      margin-left: -14px;
+      width: 14px;
+    }
+
+    & + label:after
+    {
+      background-color: rgba(0, 0, 0, 0.6);
+      content: '';
+      display: inline-block;
+      height: 14px;
+      margin-left: -1px;
+      margin-top: -1px;
+      opacity: 0;
+      width: 14px;
+    }
+
+    & + label:hover::after
+    {
+      opacity: 0.5;
+    }
+
+    &:checked + label:after
+    {
+      opacity: 1;
+    }
+    
+    &.exclusive + label,
+    &.exclusive + label::after
+    {
+      border-radius: 100%;
+    }
+    
+    &.non-exclusive + label,
+    &.non-exclusive + label::after
+    {
+      border-radius: 4px;
+    }
   }
 
   input[type="submit"]
