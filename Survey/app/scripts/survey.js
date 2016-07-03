@@ -270,11 +270,11 @@
                   {
                     if (event.currentTarget.checked)
                     {
-                      $(this).next ().next ().addClass ('active');
+                      $(this).next ().next ().next().addClass ('active');
                     }
                     else
                     {
-                      $(this).next ().next ().removeClass ('active');
+                      $(this).next ().next ().next().removeClass ('active');
                     }
                   });
 
@@ -783,7 +783,7 @@
     var options = {
       width: 400, height: 120,
       greenFrom: 75, greenTo: 100,
-      minorTicks: 5, redColor: '#109618', 
+      minorTicks: 5, redColor: '#109618',
     };
 
     var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
