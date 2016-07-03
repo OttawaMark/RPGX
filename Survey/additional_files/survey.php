@@ -64,8 +64,8 @@ require_once('./global.php');
 if (!$vbulletin->userinfo['userid']) // we must be logged in
   print_no_permission();
 
-if (!($vbulletin->userinfo['userid'] == 14566))
-  print_no_permission();
+/*if (!($vbulletin->userinfo['userid'] == 14566))
+  print_no_permission(); */
 
 // for testing: only admins, mods, and Daq
 if (!($vbulletin->userinfo['usergroupid']==6 OR $vbulletin->userinfo['usergroupid']==5 OR $vbulletin->userinfo['userid']==65324 OR $vbulletin->userinfo['userid']==25962))

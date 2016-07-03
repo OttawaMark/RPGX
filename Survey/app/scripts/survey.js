@@ -9,6 +9,7 @@
   var currentSection = 0;
 
   var sections;
+  var numQuestions, numAnswers;
 
   /**
    * Retrieves the questions associated with this survey and constructs it accordingly.
@@ -28,6 +29,8 @@
 
             var surveyString = '\n';
             var navString = '\n';
+            var navString = '\n<a id="nav-' + sections[0].name + '" href="#" ';
+            navString += 'class="nav nav-targeted" title="' + sections[0].name[0].toUpperCase() + sections[0].name.slice(1)  + '"></a>\n';
 
             var disableQuestionSet, disableSectionSet;
             var enableQuestionSet, enableSectionSet, enableSectionPositionSet;
@@ -63,11 +66,13 @@
                         {
                           lastItem = {type: 'question', qualifier: question.questionText};
 
+
                           surveyString += '<div id="Q' + section.code + '' + questionIndex + '" ';
                           surveyString += ((!!question.enabled_by) ? ('name="' + question.enabled_by + '" ') : '');
                           surveyString += 'class="question-wrapper ' + ((!!question.visible) ? 'visible-question' : 'invisible-question') + '">\n';
                           surveyString += '<p class="question">\n';
-                          surveyString += '<strong>Q' + section.code + '' + questionIndex + '</strong>. ';
+                          surveyString += '<span class="subtitle">' + section.title.toUpperCase() + '</span>';
+                          surveyString += '<strong> &#35;' + (questionIndex + 1) + '</strong>. ';
                           surveyString += question.questionText + '\n</p>\n';
 
                           question.options.forEach (function (option, optionIndex)
@@ -181,6 +186,9 @@
 
               sections.push ({name: 'submit', enabled: true});
 
+
+              navString += '\n<a id="nav-submit" href="#" ';
+              navString += 'class="nav nav-targeted disabled" title="Submit"></a>\n';
               $('#nav-wrapper').html (navString);
               $('#generated-questions').html (surveyString);
 
@@ -388,7 +396,7 @@
                         $('.nav-next').addClass ('disabled');
                       }
                     }
-                    $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
+                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -413,7 +421,7 @@
                         $('.nav-previous').addClass ('disabled');
                       }
                     }
-                    $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
+                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -426,18 +434,33 @@
                     var clicked = this.id.split ('-')[1];
                     var targetSection = 0;
 
-                    for (var count = 0; count < (sections.length - 1); count++)
+                    for (var count = 0; count < (sections.length ); count++)
                     {
-                      targetSection++;
                       if (sections[targetSection].name == clicked) break;
+                      targetSection++;
                     }
 
                     if (targetSection == currentSection) return;
 
+
                     hideSection (currentSection);
                     currentSection = targetSection;
                     showSection (currentSection);
-                    $("html, body").scrollTop($("[class^='survey-container ']").offset().top);
+                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
+
+                    // ensure next and prev buttons are properly enabled
+                    if (currentSection == 0) {
+                      $('.nav-next').removeClass ('disabled');
+                      $('.nav-previous').addClass ('disabled');
+                    }
+                    else if (currentSection == (sections.length - 1)) {
+                      $('.nav-next').addClass ('disabled');
+                      $('.nav-previous').removeClass ('disabled');
+                    }
+                    else {
+                      $('.nav-next').removeClass ('disabled');
+                      $('.nav-previous').removeClass ('disabled');
+                    }
                   });
 
               $('.nav-next').removeClass ('disabled');
@@ -446,10 +469,10 @@
             {
               console.error (e);
               console.error ('Survey questions malformed. (' + lastItem.type + ', ' + lastItem.qualifier + ')');
-            }
-        });
+                  }
+                  });
     }
-    
+
     // given an array, go through the questions in the survey and fill in the answer if it exists in the responses data set
     function fillInResponses( responses )
     {
@@ -534,6 +557,7 @@
           }
         }
       });
+
     }
 
 
@@ -541,12 +565,15 @@
     myGetJSON().then(function () {
       return populateSurvey();
     }).then( function () {
+      saveSurveySoFar(); // will update the counts and the gauge
+
       $( "#surveyForm input[id^=chk]" ).on("change", function() {
         saveSurveySoFar();
       });
       $( "#surveyForm input[id^=txt], #surveyForm textarea[id^=txt]" ).on("input propertychange", function() {
         saveSurveySoFar();
       });
+
     });
 
 
@@ -622,13 +649,20 @@
 
     var responses = {};
     var key, values, tmp, tmpValue;
+    numQuestions = 0;
+    numAnswers = 0;
+    var qAnswered;
 
     //Iterate through each named section which is enabled
     $.each (sections, function (index, section)
         {
+          if ( !section.enabled )
+            return true;
           //Iterate through every visible question in this section
           $('#section-' + section.name + ' .question-wrapper.visible-question').each (function (questionIndex)
               {
+                numQuestions += 1;
+                qAnswered = false;
                 key = $(this).prop ('id');
                 values = new Array ();
 
@@ -639,12 +673,21 @@
 
                       if (tmp.is ('textarea'))
                       {
+                        if (tmp.val && !qAnswered) {
+                          qAnswered = true;
+                          numAnswers += 1;
+                        }
                         values.push (sanitizeJSON (tmp.val ()));
                       }
                       else if (tmp.is ('input[type=checkbox]'))
                       {
                         if (tmp.prop ('checked'))
                         {
+                          if (!qAnswered) {
+                            qAnswered = true;
+                            numAnswers += 1;
+                          }
+
                           //Extract the letter
                           tmpValue = tmp.attr ('id').split ('_')[1];
 
@@ -668,6 +711,7 @@
                               responses[key] = values;
               });
         });
+    // update the Google Chart here
 
     //DEBUG
     //console.log (responses);
@@ -681,7 +725,7 @@
     // add vBulletin's security token
     returnString += '&securitytoken=' + $('input[name=securitytoken]').val();
 
-    $.ajax({
+    var req = $.ajax({
       url: 'survey.php?do=add_answers',
       type: 'POST',
       data: returnString,
@@ -704,13 +748,50 @@
         }
       }
     });
+
+    req.then(drawChart);
   }
+  function setChart() {
+    google.charts.load('current', {'packages':['gauge']});
+    var cd = $('#chart_div');
+    var offset = cd.offset().top - 77;
+    $(window).scroll(function() {
+      if( $(this).scrollTop() > offset ) {
+        cd.addClass("sticky");
+      }
+      else{
+        cd.removeClass("sticky");
+      }
+    });
+  }
+
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['% DONE', Math.min(100,Math.ceil(100 * numAnswers / numQuestions)) ],
+    ]);
+
+    var options = {
+      width: 400, height: 120,
+      greenFrom: 75, greenTo: 100,
+      minorTicks: 5, redColor: '#109618', 
+    };
+
+    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+  }  
+
 
   /**
    * Runs when the document has loaded
    **/
   $(document).ready (function () {
+
     buildSurvey();
+    setChart();
   });
 
 })();

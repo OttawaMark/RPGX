@@ -12,6 +12,20 @@ $colour-grey-dark: #333;
   margin: 0 auto;
 }
 
+#chart_div
+{
+  float: left;
+  width: 120px;
+  height: 120px;
+}
+
+.sticky
+{
+  position: fixed;
+  top: 80px;
+}
+
+
 .rpgx-survey
 {
   //-- Elements ---------------
@@ -23,7 +37,7 @@ $colour-grey-dark: #333;
   {
     border-collapse: separate;
     border-spacing: 1px;
-    
+
     td, th
     {
       padding: 4px;
@@ -111,11 +125,12 @@ $colour-grey-dark: #333;
     display: inline-block;
   }
 
+
   //-- Classes ----------------
   .hide {
     display: none !important;
   }
-  
+
   .invisible-question
   {
     border: none !important;
@@ -267,6 +282,12 @@ $colour-grey-dark: #333;
     }
   }
 
+  .subtitle
+  {
+    color: grey;
+    font-size: .7em;
+  }
+
   .section-hide
   {
     opacity: 0;
@@ -285,7 +306,7 @@ $colour-grey-dark: #333;
       width: 400px;
     }
   }
-  
+
   .survey-container
   {
     margin: 0 auto;
