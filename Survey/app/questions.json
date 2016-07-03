@@ -2,7 +2,9 @@
   "surveyInfo":
     {
       "name": "surveyInfo",
-      "id": "1"
+      "id": "1",
+      "navImages": "survey/images/nav_survey.995f53d7.png",
+      "navImageSize": "140"
     },
   "sections":
   [

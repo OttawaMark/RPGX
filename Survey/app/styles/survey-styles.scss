@@ -6,6 +6,7 @@ $colour-beige: #AF8054;
 $colour-brown: #3F3034;
 $colour-grey: #CCC;
 $colour-grey-dark: #333;
+$nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
 
 .survey-container {
   width: 800px;
@@ -49,6 +50,7 @@ $colour-grey-dark: #333;
   a.disabled,
   input.disabled
   {
+    opacity: 0.1;
     pointer-events: none;
   }
 
@@ -128,7 +130,12 @@ $colour-grey-dark: #333;
 
   input[type="submit"]
   {
+    height: 140px;
+    width: 140px;
+    background: $nav-image-file no-repeat -980px 0px;
     padding: 10px 25px;
+    border: 0px;
+    cursor:pointer;
   }
 
   input[type="text"]
@@ -188,16 +195,16 @@ $colour-grey-dark: #333;
 
   .nav
   {
-    background-color: $colour-brown;
+    //background-color: $colour-brown;
     cursor: pointer;
     display: inline-block;
     margin: 0 5px;
 
-    -webkit-transition: background-color 0.25s ease;
-    transition: background-color 0.25s ease;
+    //-webkit-transition: background-color 0.25s ease;
+    //transition: background-color 0.25s ease;
 
-    -webkit-transition: width 0.5s ease;
-    transition: width 0.5s ease;
+    //-webkit-transition: width 0.5s ease;
+    //transition: width 0.5s ease;
 
     &:active,
     &:focus,
@@ -208,7 +215,8 @@ $colour-grey-dark: #333;
 
     &.disabled
     {
-      background-color: $colour-grey;
+      //background-color: $colour-grey;
+      opacity: 0.1;
     }
 
     &.shrunk
@@ -223,7 +231,7 @@ $colour-grey-dark: #333;
     background-color: transparent !important;
     border-color: transparent transparent transparent $colour-brown;
     border-style: solid;
-    border-width: 10px 0 10px 20px;
+    border-width: 35px 0 35px 57px;
     height: 0;
     margin: 0;
     width: 0;
@@ -233,7 +241,7 @@ $colour-grey-dark: #333;
 
     &.disabled
     {
-      border-color: transparent transparent transparent $colour-grey;
+      display: none;
     }
 
     &:active,
@@ -249,7 +257,7 @@ $colour-grey-dark: #333;
     background-color: transparent !important;
     border-color: transparent $colour-brown transparent transparent;
     border-style: solid;
-    border-width: 10px 20px 10px 0;
+    border-width: 35px 57px 35px 0;
     height: 0;
     margin: 0;
     width: 0;
@@ -259,7 +267,7 @@ $colour-grey-dark: #333;
 
     &.disabled
     {
-      border-color: transparent $colour-grey transparent transparent;
+      display: none;
     }
 
     &:active,
@@ -272,9 +280,12 @@ $colour-grey-dark: #333;
 
   .nav-targeted
   {
-    height: 20px;
-    width: 50px;
     border: 0;
+    height: 70px;
+    width: 70px;
+    background-color: transparent;
+    background-image: $nav-image-file;
+    background-size: auto 100%;
   }
 
   @media (max-width: 700px)

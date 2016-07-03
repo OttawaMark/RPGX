@@ -32,6 +32,10 @@
             //Used for debugging the JSON
             var lastItem = {type: '', qualifier: ''};
 
+            var navImgFile = json.surveyInfo.navImages;
+            var navImgSize = json.surveyInfo.navImageSize;
+            var navImgCount = 0; // will be incremented during nav bar building
+
             var surveyString = '\n';
             var navString = '\n';
             var navString = '\n<a id="nav-' + sections[0].name + '" href="#" ';
@@ -50,16 +54,20 @@
               console.error (e);
               console.error ('Survey header malformed.');
             }
+            
 
             try
             {
               $.each (json.sections, function (sectionIndex, section)
                   {
+
                     lastItem = {type: 'section', qualifier: section.name};
+                    navImgCount++;
 
                     navString += '<a id="nav-' + section.name + '" href="#" ';
                     navString += 'class="disabled nav nav-targeted';
                     navString += ((!!section.enabled) ? '' : ' shrunk') + '"';
+                    navString += ' style="background-position: ' + (-1 * navImgCount * navImgSize/2) + 'px"';
                     navString += ' title="' + section.title + '"></a>\n';
 
                     sections.push ({name: section.name, enabled: !!section.enabled});
@@ -200,6 +208,7 @@
 
 
               navString += '\n<a id="nav-submit" href="#" ';
+              navString += ' style="background-position: ' + (-1 * (navImgCount+1) * navImgSize/2) + 'px"';
               navString += 'class="nav nav-targeted disabled" title="Submit"></a>\n';
               $('#nav-wrapper').html (navString);
               $('#generated-questions').html (surveyString);
@@ -408,7 +417,7 @@
                         $('.nav-next').addClass ('disabled');
                       }
                     }
-                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
+                    $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -433,7 +442,7 @@
                         $('.nav-previous').addClass ('disabled');
                       }
                     }
-                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
+                    $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -685,7 +694,7 @@
 
                       if (tmp.is ('textarea'))
                       {
-                        if (tmp.val && !qAnswered) {
+                        if (tmp.val() && !qAnswered) {
                           qAnswered = true;
                           numAnswers += 1;
                         }
