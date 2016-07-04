@@ -15,6 +15,7 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
   margin: 0 auto;
 }
 
+// A few definitions apply to the chart div and fall outside the survey inheritance
 #chart_div
 {
   float: left;
@@ -28,6 +29,11 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
   position: fixed;
   top: 80px;
 }
+
+.hide {
+  display: none !important;
+}
+
 
 
 .rpgx-survey
@@ -187,10 +193,6 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
 
 
   //-- Classes ----------------
-  .hide {
-    display: none !important;
-  }
-
   .invisible-question
   {
     border: none !important;

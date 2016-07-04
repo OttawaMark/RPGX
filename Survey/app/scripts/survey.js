@@ -417,7 +417,8 @@
                       if (currentSection == (sections.length - 1))
                       {
                         $('.nav-next').addClass ('disabled');
-                      }
+                      } else if (currentSection == 1)
+                        $('#chart_div').removeClass('hide');
                     }
                     $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
@@ -441,6 +442,7 @@
 
                       if (currentSection == 0)
                       {
+                        $('#chart_div').addClass('hide');
                         $('.nav-previous').addClass ('disabled');
                       }
                     }
@@ -476,14 +478,17 @@
                     if (currentSection == 0) {
                       $('.nav-next').removeClass ('disabled');
                       $('.nav-previous').addClass ('disabled');
+                      $('#chart_div').addClass('hide');
                     }
                     else if (currentSection == (sections.length - 1)) {
                       $('.nav-next').addClass ('disabled');
                       $('.nav-previous').removeClass ('disabled');
+                      $('#chart_div').removeClass('hide');
                     }
                     else {
                       $('.nav-next').removeClass ('disabled');
                       $('.nav-previous').removeClass ('disabled');
+                      $('#chart_div').removeClass('hide');
                     }
                   });
 
@@ -685,8 +690,11 @@
         //Prevent erroneous input
         $('nav').addClass ('hide');
 
-        // DEBUG -- comment the following line to allow the same page to run multiple times
-        $('input[type=submit]').addClass ('disabled');
+        // We're done
+        $('.closing').addClass('hide');
+
+        // redundant
+        //$('input[type=submit]').addClass ('disabled');
 
         saveSurveySoFar (true);
       });
@@ -805,7 +813,10 @@
       }
     });
 
-    req.then(drawChart);
+    req.then(function() {
+        $('#chart_div').addClass('hide');
+        drawChart();
+    });
   }
   function setChart() {
     google.charts.load('current', {'packages':['gauge']});
@@ -823,6 +834,8 @@
         }
       });
     }
+
+    $('#chart_div').addClass('hide');
   }
 
 
