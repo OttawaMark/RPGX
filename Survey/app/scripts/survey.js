@@ -409,8 +409,10 @@
 
                       $('.nav-previous').removeClass ('disabled');
 
+                      /* REMOVED: now 'enabling' the nav when the user answers a question
                       //Enable a specific section the first time the user navigates to it
                       $('#nav-' + sections[currentSection].name).removeClass ('disabled');
+                      */
 
                       if (currentSection == (sections.length - 1))
                       {
@@ -467,8 +469,9 @@
                     hideSection (currentSection);
                     currentSection = targetSection;
                     showSection (currentSection);
-                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
 
+                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
+                    
                     // ensure next and prev buttons are properly enabled
                     if (currentSection == 0) {
                       $('.nav-next').removeClass ('disabled');
@@ -499,6 +502,9 @@
     {
       var qID, answerNum, mainQ;
 
+      // will build array of sections, then activate them
+      var active_sections = [];
+
       // CHECKBOXES
 
       // select every element that starts with chk
@@ -516,6 +522,12 @@
           bits = value.match(/^(\d+)(\s+\((.*)\))?$/);
           if (bits && bits[1] == answerNum)
           {
+            // found an answered checkbox
+            
+            // store its parent section
+            if (active_sections.indexOf($(mainQ).parents("section").attr('id')) == -1 )
+              active_sections.push($(mainQ).parents("section").attr('id'));
+
             $(mainQ).prop ('checked', true);
             // trigger change events
             $(mainQ).trigger('change');
@@ -542,11 +554,24 @@
         // with text in it
         if (responses[qID] && responses[qID][0])
         {
+          // store its parent section
+            if (active_sections.indexOf($(mainQ).parents("section").attr('id')) == -1 )
+              active_sections.push($(mainQ).parents("section").attr('id'));
+
           $(mainQ).val(responses[qID][0]);
           // trigger change events
           $(mainQ).trigger('change');
         }
       });
+
+      // turn on navigation for active sections
+      $.each(active_sections, function (index, section) {
+        $('#nav' + section.substring(7)).removeClass('disabled');
+      });
+
+      // always add submit section if there are previous answers
+      if (active_sections.length > 0)
+        $('#nav-submit').removeClass('disabled');
     }
 
 
@@ -612,6 +637,7 @@
         {
           $('#section-' + sections[section].name).addClass ('hide');
         }, 1000);
+    $('#nav-' + sections[section].name).removeClass ('current');
   };
 
   /**
@@ -629,6 +655,7 @@
         {
           $('#section-' + sections[section].name).removeClass ('section-hide');
         }, 1000);
+    $('#nav-' + sections[section].name).addClass ('current');
   };
 
   /**
@@ -697,6 +724,10 @@
                         if (tmp.val() && !qAnswered) {
                           qAnswered = true;
                           numAnswers += 1;
+
+                        // currently allowing 'disabled' navs to be clicked
+                        $("#nav-" + section.name).removeClass('disabled');
+
                         }
                         values.push (sanitizeJSON (tmp.val ()));
                       }
@@ -707,6 +738,10 @@
                           if (!qAnswered) {
                             qAnswered = true;
                             numAnswers += 1;
+
+                        // currently allowing 'disabled' navs to be clicked
+                        $("#nav-" + section.name).removeClass('disabled');
+
                           }
 
                           //Extract the letter

@@ -2,11 +2,13 @@
 // endbower
 
 //-- Variables --------------
-$colour-beige: #AF8054;
-$colour-brown: #3F3034;
+//$colour-beige: #AF8054;
+$colour-beige: orange;
+//$colour-brown: #3F3334;
+$colour-brown: sienna;
 $colour-grey: #CCC;
 $colour-grey-dark: #333;
-$nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
+$nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
 
 .survey-container {
   width: 800px;
@@ -47,10 +49,14 @@ $nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
   }
 
   //-- Elements ---------------
-  a.disabled,
+  a.disabled
+  {
+    opacity: 0.3;
+  }
+
   input.disabled
   {
-    opacity: 0.1;
+    opacity: 0.3;
     pointer-events: none;
   }
 
@@ -206,17 +212,19 @@ $nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
     //-webkit-transition: width 0.5s ease;
     //transition: width 0.5s ease;
 
+    &.current,
     &:active,
-    &:focus,
+    //&:focus,
     &:hover
     {
+      opacity: 1 !important;
       background-color: $colour-beige;
     }
 
     &.disabled
     {
       //background-color: $colour-grey;
-      opacity: 0.1;
+      opacity: 0.3;
     }
 
     &.shrunk
@@ -228,16 +236,21 @@ $nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
 
   .nav-next
   {
-    background-color: transparent !important;
-    border-color: transparent transparent transparent $colour-brown;
-    border-style: solid;
-    border-width: 35px 0 35px 57px;
-    height: 0;
-    margin: 0;
-    width: 0;
 
-    -webkit-transition: border-color 0.25s ease;
-    transition: border-color 0.25s ease;
+    height: 70px;
+    width: 35px;
+    background: $nav-image-file no-repeat -560px 0px;
+    background-size: auto 100%;
+
+    //background-color: transparent !important;
+    //border-color: transparent transparent transparent $colour-brown;
+    //border-style: solid;
+    //border-width: 35px 0 35px 57px;
+
+    margin: 0;
+
+    //-webkit-transition: border-color 0.25s ease;
+    //transition: border-color 0.25s ease;
 
     &.disabled
     {
@@ -245,25 +258,28 @@ $nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
     }
 
     &:active,
-    &:focus,
+    //&:focus,
     &:hover
     {
-      border-color: transparent transparent transparent $colour-beige;
+      background-color: $colour-beige;
+      //border-color: transparent transparent transparent $colour-beige;
     }
   }
 
   .nav-previous
   {
-    background-color: transparent !important;
-    border-color: transparent $colour-brown transparent transparent;
-    border-style: solid;
-    border-width: 35px 57px 35px 0;
-    height: 0;
+    //background-color: transparent !important;
+    //border-color: transparent $colour-brown transparent transparent;
+    //border-style: solid;
+    //border-width: 35px 57px 35px 0;
+    height: 70px;
+    width: 35px;
+    background: $nav-image-file no-repeat -595px 0px;
+    background-size: auto 100%;
     margin: 0;
-    width: 0;
 
-    -webkit-transition: border-color 0.25s ease;
-    transition: border-color 0.25s ease;
+    //-webkit-transition: border-color 0.25s ease;
+    //transition: border-color 0.25s ease;
 
     &.disabled
     {
@@ -271,10 +287,11 @@ $nav-image-file: url("/survey/images/nav_survey.995f53d7.png");
     }
 
     &:active,
-    &:focus,
+    //&:focus,
     &:hover
     {
-      border-color: transparent $colour-beige transparent transparent;
+      background-color: $colour-beige;
+      //border-color: transparent $colour-beige transparent transparent;
     }
   }
 
