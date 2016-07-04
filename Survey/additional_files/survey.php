@@ -25,6 +25,16 @@
    PRIMARY KEY (surveyid,questionid,userid)
  );
 
+
+ CREATE TABLE IF NOT EXISTS vb3_survey_CS (
+   userid int(10) unsigned NOT NULL,
+   surveyid smallint(5) unsigned NOT NULL,
+   dateline_entered int(10) unsigned NOT NULL,
+   dateline_given int(10) unsigned NOT NULL,
+   PRIMARY KEY (surveyid,userid)
+ );
+
+
  */
 
 // # SET PHP ENVIRONMENT #
@@ -114,6 +124,7 @@ else if ($_REQUEST['do'] == 'add_answers')
   // variable cleanup
   $vbulletin->input->clean_array_gpc('p', array(
     'ajax' => TYPE_BOOL,
+    'CS_award' => TYPE_BOOL,
     'surveyID' => TYPE_INT,
     'surveyresponses' => TYPE_STR,
     'securitytoken' => TYPE_STR
@@ -134,6 +145,18 @@ else if ($_REQUEST['do'] == 'add_answers')
 
   // get stored answers from the DB
   $storedAnswers = getExistingResults($db, $vbulletin->GPC['surveyID'], $vbulletin->userinfo[userid]);
+
+  if ($vbulletin->GPC['CS_award']) {
+
+    $CS_query_str = "
+      INSERT INTO " . TABLE_PREFIX . "survey_CS (userid, surveyid, dateline_entered)
+      VALUES (" . $vbulletin->userinfo[userid] . ', ' . $vbulletin->GPC['surveyID'] . ", " . TIMENOW . ")
+      ON DUPLICATE KEY UPDATE dateline_entered = VALUES(dateline_entered)
+      ";
+    $db->query_write($CS_query_str);
+
+  }
+
 
   // for each question and answer, stick it in the DB
   // note that the timestamp will always be the same for ALL answers as currently coded
