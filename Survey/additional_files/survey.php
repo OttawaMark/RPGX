@@ -34,6 +34,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~8192);
 define('NO_REGISTER_GLOBALS', 1);
 define('THIS_SCRIPT', 'survey');
 define('CSRF_PROTECTION', true); // let's not let nasty folks do nasty things, yeah?
+define('LOG_FILE', '/home/nginx/domains/rpgcrossing.com/log/survey.log');
 
 // # PRE-CACHE TEMPLATES AND DATA #
 // get special phrase groups
@@ -153,11 +154,15 @@ else if ($_REQUEST['do'] == 'add_answers')
     $answer = $db->escape_string($answer); // just in case; expect nothing to escape here
     //log_vbulletin_error($question . ' : ' . $answer, 'php');
 
-    $db->query_write("
+    $query_str = "
       INSERT INTO " . TABLE_PREFIX . "survey (userid, surveyid, dateline, questionid, answer)
       VALUES (" . $vbulletin->userinfo[userid] . ', ' . $vbulletin->GPC['surveyID'] . ", " . TIMENOW . ", '$question', '$answer')
       ON DUPLICATE KEY UPDATE dateline = VALUES(dateline), answer = VALUES(answer)
-      ");
+      ";
+    $surveyLogFile = fopen(LOG_FILE, 'a');
+    fwrite($surveyLogFile, $query_str . "\n");
+    fclose($surveyLogFile);
+    $db->query_write($query_str);
   }
 
   // returning from AJAX call to fill field on form
