@@ -171,6 +171,13 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
     }
   }
 
+  p.question
+  {
+    padding-left: 8em;
+    text-indent:-8em;
+  }
+
+
   section
   {
     opacity: 1.0;
@@ -217,7 +224,7 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
     &.current,
     &:active,
     //&:focus,
-    &:hover
+    .no-touch &:hover
     {
       opacity: 1 !important;
       background-color: $colour-beige;
@@ -261,7 +268,7 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
 
     &:active,
     //&:focus,
-    &:hover
+    .no-touch &:hover
     {
       background-color: $colour-beige;
       //border-color: transparent transparent transparent $colour-beige;
@@ -290,7 +297,7 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
 
     &:active,
     //&:focus,
-    &:hover
+    .no-touch &:hover
     {
       background-color: $colour-beige;
       //border-color: transparent $colour-beige transparent transparent;
