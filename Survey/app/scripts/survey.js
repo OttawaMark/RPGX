@@ -74,6 +74,7 @@
 
                     surveyString += '<section id="section-' + section.name + '" class="hide section-hide">\n';
                     surveyString += '<h2>' + section.title + '</h2>\n';
+                    surveyString += '<h3 id="percentComplete"></h3>\n';
 
                     section.questions.forEach (function (question, questionIndex)
                         {
@@ -409,6 +410,7 @@
 
                       $('.nav-previous').removeClass ('disabled');
 
+
                       /* REMOVED: now 'enabling' the nav when the user answers a question
                       //Enable a specific section the first time the user navigates to it
                       $('#nav-' + sections[currentSection].name).removeClass ('disabled');
@@ -417,10 +419,8 @@
                       if (currentSection == (sections.length - 1))
                       {
                         $('.nav-next').addClass ('disabled');
-                      } else if (currentSection == 1)
-                        $('#chart_div').removeClass('hide');
+                      } 
                     }
-                    $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -442,11 +442,10 @@
 
                       if (currentSection == 0)
                       {
-                        $('#chart_div').addClass('hide');
                         $('.nav-previous').addClass ('disabled');
                       }
                     }
-                    $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
+                    //$("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               /**
@@ -472,24 +471,20 @@
                     currentSection = targetSection;
                     showSection (currentSection);
 
-                    $("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
-                    
                     // ensure next and prev buttons are properly enabled
                     if (currentSection == 0) {
                       $('.nav-next').removeClass ('disabled');
                       $('.nav-previous').addClass ('disabled');
-                      $('#chart_div').addClass('hide');
                     }
                     else if (currentSection == (sections.length - 1)) {
                       $('.nav-next').addClass ('disabled');
                       $('.nav-previous').removeClass ('disabled');
-                      $('#chart_div').removeClass('hide');
                     }
                     else {
                       $('.nav-next').removeClass ('disabled');
                       $('.nav-previous').removeClass ('disabled');
-                      $('#chart_div').removeClass('hide');
                     }
+                    //$("body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
                   });
 
               $('.nav-next').removeClass ('disabled');
@@ -616,14 +611,21 @@
     myGetJSON().then(function () {
       return populateSurvey();
     }).then( function () {
-      saveSurveySoFar(); // will update the counts and the gauge
+      saveSurveySoFar(); // will update the counts
 
-      $( "#surveyForm input[id^=chk]" ).on("change", function() {
+      // saving on every data entry cause server overload... CAN'T DO THIS
+      /*$( "#surveyForm input[id^=chk]" ).on("change", function() {
         saveSurveySoFar();
       });
       $( "#surveyForm input[id^=txt], #surveyForm textarea[id^=txt]" ).on("input propertychange", function() {
         saveSurveySoFar();
+      });*/
+/*
+// ORDER IS WRONG HERE
+      $( ".nav-previous, .nav-next, .nav-targeted").on('click', function() {
+        saveSurveySoFar();
       });
+*/
 
     });
 
@@ -651,6 +653,7 @@
   function showSection (section)
   {
     //Note: timing must be staggered for animation to trigger successfully
+    saveSurveySoFar();
     setTimeout (function ()
         {
           $('#section-' + sections[section].name).removeClass ('hide');
@@ -661,6 +664,8 @@
           $('#section-' + sections[section].name).removeClass ('section-hide');
         }, 1000);
     $('#nav-' + sections[section].name).addClass ('current');
+    $('#section-' + sections[section].name + ' #percentComplete').html ( '[survey is ' + Math.min(100,Math.ceil(100 * numAnswers / numQuestions)) + '% complete]');
+    $("html, body").animate({ scrollTop: $("#survey-top").offset().top }, 500);
   };
 
   /**
@@ -817,51 +822,7 @@
       }
     });
 
-    req.then(function() {
-        if (currentSection == 0)
-          $('#chart_div').addClass('hide');
-        drawChart();
-    });
-  }
-  function setChart() {
-    google.charts.load('current', {'packages':['gauge']});
-
-    // unless user is on a mobile device, allow gauge to stick
-    if (!isMobile) {
-      var cd = $('#chart_div');
-      var offset = cd.offset().top - 77;
-      $(window).scroll(function() {
-        if( $(this).scrollTop() > offset ) {
-          cd.addClass("sticky");
-        }
-        else{
-          cd.removeClass("sticky");
-        }
-      });
-    }
-
-    $('#chart_div').addClass('hide');
-  }
-
-
-  function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Label', 'Value'],
-        ['% DONE', Math.min(100,Math.ceil(100 * numAnswers / numQuestions)) ],
-    ]);
-
-    var options = {
-      width: 400, height: 120,
-      greenFrom: 75, greenTo: 100,
-      minorTicks: 5, redColor: '#109618',
-    };
-
-    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-    chart.draw(data, options);
-  }  
-
+ }
 
   /**
    * Runs when the document has loaded
@@ -873,7 +834,6 @@
     }
 
     buildSurvey();
-    setChart();
   });
 
 })();

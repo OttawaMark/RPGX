@@ -79,9 +79,8 @@ if (!$vbulletin->userinfo['userid']) // we must be logged in
   print_no_permission(); */
 
 // for testing: only admins, mods, and Daq
-if (!($vbulletin->userinfo['usergroupid']==6 OR $vbulletin->userinfo['usergroupid']==5 OR $vbulletin->userinfo['userid']==65324 OR $vbulletin->userinfo['userid']==25962))
-  print_no_permission();
-
+/*if (!($vbulletin->userinfo['usergroupid']==6 OR $vbulletin->userinfo['usergroupid']==5 OR $vbulletin->userinfo['userid']==65324 OR $vbulletin->userinfo['userid']==25962 OR $vbulletin->userinfo['userid']==48883))
+  print_no_permission();*/
 if(($_REQUEST['do'] == '' || !isset($_REQUEST['do'])))
 {
   // script with no parameters
@@ -192,8 +191,8 @@ else if ($_REQUEST['do'] == 'add_answers')
   // valid HTML message text.
   echo '<p style="text-align:center;font-size:2em;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!
     <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.
-    <br /><br />If you answered 75% or more of the questions, a year will be added to your current Community Supporter membership, or to
-    any such membership (max one bonus month per account) that you purchase within the next six months (by 31 January 2017.)</p>';
+    <br /><br />If you answered 75% or more of the questions, a month will be added to your current Community Supporter membership, or to
+    any such membership (max one bonus month per account) that you purchase for the account used to do the survey within the next six months (by 31 January 2017.)</p>';
   return;
 }
 else if ($_REQUEST['do'] == 'view_results')

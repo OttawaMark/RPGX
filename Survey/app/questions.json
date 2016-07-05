@@ -449,7 +449,7 @@
             },
             {
               "type": "non-exclusive",
-              "value": "New PLayer Solo Games",
+              "value": "New Player Solo Games",
               "specify": false,
               "enables": [],
               "disables": []
@@ -1024,7 +1024,7 @@
       "questions":
       [
         {
-          "questionText": "If you have a monthly subscription, why do you have a monthly subscription instead of a yearly subcription?",
+          "questionText": "If you have or had a monthly subscription, why a monthly subscription instead of a yearly subcription?",
           "visible": true,
           "options":
           [
@@ -1034,7 +1034,7 @@
           ]
         },
         {
-          "questionText": "What do you like most about being a CS (select all that apply)?",
+          "questionText": "What do you / did you like most about being a CS (select all that apply)?",
           "visible": true,
           "options":
           [
@@ -1118,7 +1118,7 @@
           ]
         },
         {
-          "questionText": "Do you use the mobile style/interface?",
+          "questionText": "Do you / did you use the mobile style/interface?",
           "visible": true,
           "options":
           [
@@ -1188,7 +1188,7 @@
           ]
         },
         {
-          "questionText": "What would most improve your experience as a CS?",
+          "questionText": "What would most improve or have improved your experience as a CS?",
           "visible": true,
           "options":
           [
