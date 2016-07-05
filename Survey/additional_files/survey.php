@@ -191,9 +191,9 @@ else if ($_REQUEST['do'] == 'add_answers')
   // returning from AJAX call to fill field on form
   // valid HTML message text.
   echo '<p style="text-align:center;font-size:2em;padding:2em">Your results have been saved. Thank you for taking the time to complete our survey!
-    <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.</p>
+    <br /><br />If you wish to view or edit your answers, please reload the survey, which will be preloaded with your current answers.
     <br /><br />If you answered 75% or more of the questions, a year will be added to your current Community Supporter membership, or to
-    any such membership that you purchase within the next six months (by 31 January 2017.)';
+    any such membership (max one bonus month per account) that you purchase within the next six months (by 31 January 2017.)</p>';
   return;
 }
 else if ($_REQUEST['do'] == 'view_results')
