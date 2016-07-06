@@ -369,6 +369,12 @@
               "enables": [],
               "disables": [],
               "specify": true
+            },
+            {
+              "type": "exclusive",
+              "value": "I *am* a CS! (Thank you!)",
+              "enables": [],
+              "disables": []
             }
           ]
         },

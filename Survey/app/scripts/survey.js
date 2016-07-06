@@ -792,7 +792,7 @@
     returnString += '&surveyID=' + $('input[name=surveyID]').val();
 
     // if this puts us over the edge for a CS coupon, register that
-    if (numAnswers / numQuestions >= 0.75 && (numAnswers-1) / numQuestions < 0.75)
+    if (numAnswers / numQuestions >= 0.75)
       returnString += '&CS_award=1';
 
     // add vBulletin's security token
