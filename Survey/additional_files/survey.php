@@ -134,9 +134,14 @@ else if ($_REQUEST['do'] == 'add_answers')
     print_no_permission();
 
   // DEBUG
-  //require_once(DIR . '/includes/functions_log_error.php');
+  /*
+  require_once(DIR . '/includes/functions_log_error.php');
 
-  //log_vbulletin_error($vbulletin->GPC['surveyresponses'], 'php');
+  if ($vbulletin->userinfo[userid] == '48883') {
+    log_vbulletin_error($vbulletin->GPC['surveyresponses'], 'php');
+    log_vbulletin_error(print_r($_POST, true), 'php');
+  }
+   */
   // recover array of answers from script
   $response_r = json_decode($vbulletin->GPC['surveyresponses'], true);
   //log_vbulletin_error(print_r($response_r, true), 'php');

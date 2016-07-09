@@ -96,6 +96,8 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
     
     & + label
     {
+      position: relative;
+      
       background-color: rgba(0, 0, 0, 0.3);
       border: 1px solid #999;
       display: inline-block;
@@ -104,39 +106,65 @@ $nav-image-file: url("/survey/images/nav_survey.9873f8a0.png");
       width: 14px;
     }
 
-    & + label:after
+    & + label:before
     {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      
       background-color: rgba(0, 0, 0, 0.6);
       content: '';
       display: inline-block;
-      height: 14px;
-      margin-top: -1px;
-      margin-left: -1px;
-      margin-bottom: 7px;
       opacity: 0;
-      width: 14px;
     }
 
+    & + label:after
+    {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      right: 3px;
+      top: 3px;
+      
+      background-color: rgba(255, 255, 255, 0.6);
+      content: '';
+      display: inline-block;
+      opacity: 0;
+    }
+    
     & + label:hover::after
     {
       opacity: 0.5;
     }
 
-    &:checked + label:after
+    &:checked + label:after,
+    &:checked + label:before
     {
       opacity: 1;
     }
     
     &.exclusive + label,
-    &.exclusive + label::after
+    &.exclusive + label:after,
+    &.exclusive + label:before
     {
       border-radius: 100%;
     }
     
-    &.non-exclusive + label,
-    &.non-exclusive + label::after
+    &.non-exclusive + label
     {
       border-radius: 4px;
+    }
+    
+    &.non-exclusive + label:after
+    {
+      border-radius: 3px;
+    }
+    
+    &.non-exclusive + label:before
+    {
+      border-radius: 2px;
     }
   }
 

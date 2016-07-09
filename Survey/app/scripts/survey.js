@@ -786,7 +786,7 @@
     //console.log (responses);
     //console.log (JSON.stringify (responses));
 
-    var returnString = '&surveyresponses=' + JSON.stringify (responses);
+    var returnString = '&surveyresponses=' + encodeURIComponent(JSON.stringify (responses));
 
     // add unique ID from json survey file
     returnString += '&surveyID=' + $('input[name=surveyID]').val();
